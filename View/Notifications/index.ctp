@@ -15,7 +15,7 @@
 	<tr>
 		<td><?php echo h($notification['Notification']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($notification['Folk']['id'], array('controller' => 'folks', 'action' => 'view', $notification['Folk']['id'])); ?>
+			<?php echo $this->Html->link($notification['Folk']['full_name'], array('controller' => 'folks', 'action' => 'view', $notification['Folk']['id'])); ?>
 		</td>
 		<td><?php echo h($notification['Notification']['notification']); ?>&nbsp;</td>
 		<td><?php echo h($notification['Notification']['description']); ?>&nbsp;</td>

@@ -9,7 +9,7 @@ App::uses('AppModel', 'Model');
  */
 class Level extends AppModel {
 
-
+public $displayField = 'level';
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**

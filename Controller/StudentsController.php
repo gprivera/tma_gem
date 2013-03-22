@@ -17,6 +17,7 @@ class StudentsController extends AppController {
 		$this->set('students', $this->paginate());
 	}
 
+ 
 /**
  * view method
  *
@@ -26,7 +27,7 @@ class StudentsController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Student->exists($id)) {
-			throw new NotFoundException(__('Invalid student'));
+			throw new NotFoundException(__('Inalid student'));
 		}
 		$options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
 		$this->set('student', $this->Student->find('first', $options));

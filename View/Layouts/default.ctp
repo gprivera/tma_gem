@@ -37,6 +37,15 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->fetch('script');
 	?>
 </head>
+<?php
+	if($logged_user){
+		echo $logged_user;
+		echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); 
+	}else{
+		
+		echo $this->Html->link(__('Login'), array('controller' => 'users', 'action' => 'login')); 
+	}
+?>
 <body>
 	<div id="container">
 		<div id="content">

@@ -31,24 +31,24 @@
 			<?php echo h($child['Child']['birthdate']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Age'); ?></dt>
-		<dd>
-			<?php echo h($child['Child']['age']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Religion'); ?></dt>
 		<dd>
 			<?php echo h($child['Child']['religion']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Folks'); ?></dt>
+		<dt><?php echo __('Folk'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($child['Folk']['id'], array('controller' => 'folks', 'action' => 'view', $child['Folk']['id'])); ?>
+			<?php echo $this->Html->link($child['Folk']['full_name'], array('controller' => 'folks', 'action' => 'view', $child['Folk']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Is Enrolled'); ?></dt>
 		<dd>
 			<?php echo h($child['Child']['is_enrolled']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Is Graduate'); ?></dt>
+		<dd>
+			<?php echo h($child['Child']['is_graduate']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -61,7 +61,7 @@
 		<li><?php echo $this->Html->link(__('List Children'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Child'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Folks'), array('controller' => 'folks', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Folks'), array('controller' => 'folks', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Folk'), array('controller' => 'folks', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
 	</ul>

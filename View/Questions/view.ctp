@@ -13,7 +13,7 @@
 		</dd>
 		<dt><?php echo __('Question Type'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($question['QuestionType']['id'], array('controller' => 'question_types', 'action' => 'view', $question['QuestionType']['id'])); ?>
+			<?php echo $this->Html->link($question['QuestionType']['type'], array('controller' => 'question_types', 'action' => 'view', $question['QuestionType']['id'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

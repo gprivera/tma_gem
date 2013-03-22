@@ -8,12 +8,12 @@
 		</dd>
 		<dt><?php echo __('Folk'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($answer['Folk']['id'], array('controller' => 'folks', 'action' => 'view', $answer['Folk']['id'])); ?>
+			<?php echo $this->Html->link($answer['Folk']['full_name'], array('controller' => 'folks', 'action' => 'view', $answer['Folk']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Question'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($answer['Question']['id'], array('controller' => 'questions', 'action' => 'view', $answer['Question']['id'])); ?>
+			<?php echo $this->Html->link($answer['Question']['question'], array('controller' => 'questions', 'action' => 'view', $answer['Question']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Answer'); ?></dt>

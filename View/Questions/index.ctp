@@ -12,7 +12,7 @@
 		<td><?php echo h($question['Question']['id']); ?>&nbsp;</td>
 		<td><?php echo h($question['Question']['question']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($question['QuestionType']['id'], array('controller' => 'question_types', 'action' => 'view', $question['QuestionType']['id'])); ?>
+			<?php echo $this->Html->link($question['QuestionType']['type'], array('controller' => 'question_types', 'action' => 'view', $question['QuestionType']['id'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $question['Question']['id'])); ?>

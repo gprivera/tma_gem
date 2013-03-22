@@ -11,8 +11,9 @@
 		echo $this->Form->input('birthdate');
 		echo $this->Form->input('age');
 		echo $this->Form->input('religion');
-		echo $this->Form->input('folks_id');
+		echo $this->Form->input('folk_id');
 		echo $this->Form->input('is_enrolled');
+		echo $this->Form->input('is_graduate');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -24,7 +25,7 @@
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Child.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Child.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Children'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Folks'), array('controller' => 'folks', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Folks'), array('controller' => 'folks', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Folk'), array('controller' => 'folks', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
 	</ul>

@@ -6,6 +6,11 @@
 			<?php echo h($task['Task']['id']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Creator'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($task['Creator']['username'], array('controller' => 'users', 'action' => 'view', $task['Creator']['id'])); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Task'); ?></dt>
 		<dd>
 			<?php echo h($task['Task']['task']); ?>
@@ -18,7 +23,12 @@
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($task['User']['id'], array('controller' => 'users', 'action' => 'view', $task['User']['id'])); ?>
+			<?php echo $this->Html->link($task['User']['username'], array('controller' => 'users', 'action' => 'view', $task['User']['id'])); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Due Date'); ?></dt>
+		<dd>
+			<?php echo h($task['Task']['due_date']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>

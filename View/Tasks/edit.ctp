@@ -4,9 +4,11 @@
 		<legend><?php echo __('Edit Task'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
+		echo $this->Form->input('creator_id');
 		echo $this->Form->input('task');
 		echo $this->Form->input('is_accomplished');
 		echo $this->Form->input('user_id');
+		echo $this->Form->input('due_date');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

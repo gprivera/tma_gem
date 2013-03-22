@@ -14,7 +14,7 @@
 			<?php echo $this->Html->link($participant['Event']['id'], array('controller' => 'events', 'action' => 'view', $participant['Event']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($participant['Folk']['id'], array('controller' => 'folks', 'action' => 'view', $participant['Folk']['id'])); ?>
+			<?php echo $this->Html->link($participant['Folk']['full_name'], array('controller' => 'folks', 'action' => 'view', $participant['Folk']['id'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $participant['Participant']['id'])); ?>

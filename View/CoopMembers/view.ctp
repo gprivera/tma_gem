@@ -13,7 +13,7 @@
 		</dd>
 		<dt><?php echo __('Folk'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($coopMember['Folk']['id'], array('controller' => 'folks', 'action' => 'view', $coopMember['Folk']['id'])); ?>
+			<?php echo $this->Html->link($coopMember['Folk']['full_name'], array('controller' => 'folks', 'action' => 'view', $coopMember['Folk']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Date Joined'); ?></dt>

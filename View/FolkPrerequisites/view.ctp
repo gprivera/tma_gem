@@ -18,7 +18,7 @@
 		</dd>
 		<dt><?php echo __('Folk'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($folkPrerequisite['Folk']['id'], array('controller' => 'folks', 'action' => 'view', $folkPrerequisite['Folk']['id'])); ?>
+			<?php echo $this->Html->link($folkPrerequisite['Folk']['full_name'], array('controller' => 'folks', 'action' => 'view', $folkPrerequisite['Folk']['id'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

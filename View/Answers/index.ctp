@@ -12,10 +12,10 @@
 	<tr>
 		<td><?php echo h($answer['Answer']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($answer['Folk']['id'], array('controller' => 'folks', 'action' => 'view', $answer['Folk']['id'])); ?>
+			<?php echo $this->Html->link($answer['Folk']['full_name'], array('controller' => 'folks', 'action' => 'view', $answer['Folk']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($answer['Question']['id'], array('controller' => 'questions', 'action' => 'view', $answer['Question']['id'])); ?>
+			<?php echo $this->Html->link($answer['Question']['question'], array('controller' => 'questions', 'action' => 'view', $answer['Question']['id'])); ?>
 		</td>
 		<td><?php echo h($answer['Answer']['answer']); ?>&nbsp;</td>
 		<td class="actions">

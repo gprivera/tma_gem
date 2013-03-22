@@ -36,12 +36,53 @@
 		<li><?php echo $this->Html->link(__('New Task'), array('controller' => 'tasks', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-<div class="related">
+	<div class="related">
+		<h3><?php echo __('Related Tasks'); ?></h3>
+	<?php if (!empty($user['Task'])): ?>
+		<dl>
+			<dt><?php echo __('Id'); ?></dt>
+		<dd>
+	<?php echo $user['Task']['id']; ?>
+&nbsp;</dd>
+		<dt><?php echo __('Creator Id'); ?></dt>
+		<dd>
+	<?php echo $user['Task']['creator_id']; ?>
+&nbsp;</dd>
+		<dt><?php echo __('Task'); ?></dt>
+		<dd>
+	<?php echo $user['Task']['task']; ?>
+&nbsp;</dd>
+		<dt><?php echo __('Is Accomplished'); ?></dt>
+		<dd>
+	<?php echo $user['Task']['is_accomplished']; ?>
+&nbsp;</dd>
+		<dt><?php echo __('User Id'); ?></dt>
+		<dd>
+	<?php echo $user['Task']['user_id']; ?>
+&nbsp;</dd>
+		<dt><?php echo __('Created'); ?></dt>
+		<dd>
+	<?php echo $user['Task']['created']; ?>
+&nbsp;</dd>
+		<dt><?php echo __('Modified'); ?></dt>
+		<dd>
+	<?php echo $user['Task']['modified']; ?>
+&nbsp;</dd>
+		</dl>
+	<?php endif; ?>
+		<div class="actions">
+			<ul>
+				<li><?php echo $this->Html->link(__('Edit Task'), array('controller' => 'tasks', 'action' => 'edit', $user['Task']['id'])); ?></li>
+			</ul>
+		</div>
+	</div>
+	<div class="related">
 	<h3><?php echo __('Related Tasks'); ?></h3>
 	<?php if (!empty($user['Task'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Creator Id'); ?></th>
 		<th><?php echo __('Task'); ?></th>
 		<th><?php echo __('Is Accomplished'); ?></th>
 		<th><?php echo __('User Id'); ?></th>
@@ -54,6 +95,7 @@
 		foreach ($user['Task'] as $task): ?>
 		<tr>
 			<td><?php echo $task['id']; ?></td>
+			<td><?php echo $task['creator_id']; ?></td>
 			<td><?php echo $task['task']; ?></td>
 			<td><?php echo $task['is_accomplished']; ?></td>
 			<td><?php echo $task['user_id']; ?></td>

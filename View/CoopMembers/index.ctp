@@ -15,7 +15,7 @@
 			<?php echo $this->Html->link($coopMember['Coop']['id'], array('controller' => 'coops', 'action' => 'view', $coopMember['Coop']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($coopMember['Folk']['id'], array('controller' => 'folks', 'action' => 'view', $coopMember['Folk']['id'])); ?>
+			<?php echo $this->Html->link($coopMember['Folk']['full_name'], array('controller' => 'folks', 'action' => 'view', $coopMember['Folk']['id'])); ?>
 		</td>
 		<td><?php echo h($coopMember['CoopMember']['date_joined']); ?>&nbsp;</td>
 		<td class="actions">

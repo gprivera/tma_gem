@@ -1,5 +1,9 @@
+
 <div class="folks view">
-<h2><?php  echo __('Folk'); ?></h2>
+	
+<h2><?php  echo __('Families'); ?></h2>
+<table border ="1">
+	<td>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -77,45 +81,25 @@
 			&nbsp;
 		</dd>
 	</dl>
+</td>
+</table>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Folk'), array('action' => 'edit', $folk['Folk']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Folk'), array('action' => 'delete', $folk['Folk']['id']), null, __('Are you sure you want to delete # %s?', $folk['Folk']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Folks'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Folk'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Answers'), array('controller' => 'answers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Answer'), array('controller' => 'answers', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Coop Members'), array('controller' => 'coop_members', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Coop Member'), array('controller' => 'coop_members', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Folk Prerequisites'), array('controller' => 'folk_prerequisites', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Folk Prerequisite'), array('controller' => 'folk_prerequisites', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Notifications'), array('controller' => 'notifications', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Notification'), array('controller' => 'notifications', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Participants'), array('controller' => 'participants', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Participant'), array('controller' => 'participants', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Children'), array('controller' => 'children', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Child'), array('controller' => 'children', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+
 <div class="related">
 	<h3><?php echo __('Related Answers'); ?></h3>
 	<?php if (!empty($folk['Answer'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Folk Id'); ?></th>
+
 		<th><?php echo __('Question Id'); ?></th>
 		<th><?php echo __('Answer'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
+
 	</tr>
 	<?php
 		$i = 0;
 		foreach ($folk['Answer'] as $answer): ?>
 		<tr>
-			<td><?php echo $answer['id']; ?></td>
-			<td><?php echo $answer['folk_id']; ?></td>
 			<td><?php echo $answer['question_id']; ?></td>
 			<td><?php echo $answer['answer']; ?></td>
 			<td class="actions">
@@ -139,9 +123,8 @@
 	<?php if (!empty($folk['CoopMember'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php echo __('Id'); ?></th>
+		
 		<th><?php echo __('Coop Id'); ?></th>
-		<th><?php echo __('Folk Id'); ?></th>
 		<th><?php echo __('Date Joined'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -149,9 +132,9 @@
 		$i = 0;
 		foreach ($folk['CoopMember'] as $coopMember): ?>
 		<tr>
-			<td><?php echo $coopMember['id']; ?></td>
+			
 			<td><?php echo $coopMember['coop_id']; ?></td>
-			<td><?php echo $coopMember['folk_id']; ?></td>
+		
 			<td><?php echo $coopMember['date_joined']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'coop_members', 'action' => 'view', $coopMember['id'])); ?>
@@ -174,20 +157,20 @@
 	<?php if (!empty($folk['FolkPrerequisite'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php echo __('Id'); ?></th>
+	
 		<th><?php echo __('Requirement Id'); ?></th>
 		<th><?php echo __('Is Accomplished'); ?></th>
-		<th><?php echo __('Folk Id'); ?></th>
+
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
 		$i = 0;
 		foreach ($folk['FolkPrerequisite'] as $folkPrerequisite): ?>
 		<tr>
-			<td><?php echo $folkPrerequisite['id']; ?></td>
+		
 			<td><?php echo $folkPrerequisite['requirement_id']; ?></td>
 			<td><?php echo $folkPrerequisite['is_accomplished']; ?></td>
-			<td><?php echo $folkPrerequisite['folk_id']; ?></td>
+		
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'folk_prerequisites', 'action' => 'view', $folkPrerequisite['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'folk_prerequisites', 'action' => 'edit', $folkPrerequisite['id'])); ?>
@@ -209,26 +192,22 @@
 	<?php if (!empty($folk['Notification'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Folk Id'); ?></th>
+
 		<th><?php echo __('Notification'); ?></th>
 		<th><?php echo __('Description'); ?></th>
 		<th><?php echo __('Date'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
+
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
 		$i = 0;
 		foreach ($folk['Notification'] as $notification): ?>
 		<tr>
-			<td><?php echo $notification['id']; ?></td>
-			<td><?php echo $notification['folk_id']; ?></td>
+
 			<td><?php echo $notification['notification']; ?></td>
 			<td><?php echo $notification['description']; ?></td>
 			<td><?php echo $notification['date']; ?></td>
-			<td><?php echo $notification['created']; ?></td>
-			<td><?php echo $notification['modified']; ?></td>
+
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'notifications', 'action' => 'view', $notification['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'notifications', 'action' => 'edit', $notification['id'])); ?>
@@ -250,16 +229,16 @@
 	<?php if (!empty($folk['Participant'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php echo __('Id'); ?></th>
+
 		<th><?php echo __('Event Id'); ?></th>
-		<th><?php echo __('Folk Id'); ?></th>
+
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
 		$i = 0;
 		foreach ($folk['Participant'] as $participant): ?>
 		<tr>
-			<td><?php echo $participant['id']; ?></td>
+			
 			<td><?php echo $participant['event_id']; ?></td>
 			<td><?php echo $participant['folk_id']; ?></td>
 			<td class="actions">
@@ -283,15 +262,14 @@
 	<?php if (!empty($folk['Child'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php echo __('Id'); ?></th>
+		
 		<th><?php echo __('Surname'); ?></th>
 		<th><?php echo __('Middle Name'); ?></th>
 		<th><?php echo __('Given Name'); ?></th>
 		<th><?php echo __('Address'); ?></th>
 		<th><?php echo __('Birthdate'); ?></th>
-		<th><?php echo __('Age'); ?></th>
 		<th><?php echo __('Religion'); ?></th>
-		<th><?php echo __('Folk Id'); ?></th>
+
 		<th><?php echo __('Is Enrolled'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -299,15 +277,14 @@
 		$i = 0;
 		foreach ($folk['Child'] as $child): ?>
 		<tr>
-			<td><?php echo $child['id']; ?></td>
+			
 			<td><?php echo $child['surname']; ?></td>
 			<td><?php echo $child['middle_name']; ?></td>
 			<td><?php echo $child['given_name']; ?></td>
 			<td><?php echo $child['address']; ?></td>
 			<td><?php echo $child['birthdate']; ?></td>
-			<td><?php echo $child['age']; ?></td>
 			<td><?php echo $child['religion']; ?></td>
-			<td><?php echo $child['folk_id']; ?></td>
+		
 			<td><?php echo $child['is_enrolled']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'children', 'action' => 'view', $child['id'])); ?>

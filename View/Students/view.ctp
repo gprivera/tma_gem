@@ -23,7 +23,7 @@
 		</dd>
 		<dt><?php echo __('Child'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($student['Child']['id'], array('controller' => 'children', 'action' => 'view', $student['Child']['id'])); ?>
+			<?php echo $this->Html->link($student['Child']['full_name'], array('controller' => 'children', 'action' => 'view', $student['Child']['id'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

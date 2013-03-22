@@ -8,7 +8,7 @@
 		</dd>
 		<dt><?php echo __('Folk'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($notification['Folk']['id'], array('controller' => 'folks', 'action' => 'view', $notification['Folk']['id'])); ?>
+			<?php echo $this->Html->link($notification['Folk']['full_name'], array('controller' => 'folks', 'action' => 'view', $notification['Folk']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Notification'); ?></dt>

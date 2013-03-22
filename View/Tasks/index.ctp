@@ -7,6 +7,7 @@
 			<th><?php echo $this->Paginator->sort('task'); ?></th>
 			<th><?php echo $this->Paginator->sort('is_accomplished'); ?></th>
 			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('due_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -15,13 +16,14 @@
 	<tr>
 		<td><?php echo h($task['Task']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($task['Creator']['id'], array('controller' => 'users', 'action' => 'view', $task['User']['id'])); ?>
+			<?php echo $this->Html->link($task['Creator']['username'], array('controller' => 'users', 'action' => 'view', $task['Creator']['id'])); ?>
 		</td>
 		<td><?php echo h($task['Task']['task']); ?>&nbsp;</td>
 		<td><?php echo h($task['Task']['is_accomplished']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($task['User']['id'], array('controller' => 'users', 'action' => 'view', $task['User']['id'])); ?>
+			<?php echo $this->Html->link($task['User']['username'], array('controller' => 'users', 'action' => 'view', $task['User']['id'])); ?>
 		</td>
+		<td><?php echo h($task['Task']['due_date']); ?>&nbsp;</td>
 		<td><?php echo h($task['Task']['created']); ?>&nbsp;</td>
 		<td><?php echo h($task['Task']['modified']); ?>&nbsp;</td>
 		<td class="actions">

@@ -16,7 +16,7 @@
 		<td><?php echo h($student['Student']['image']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['entry_date']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($student['Child']['id'], array('controller' => 'children', 'action' => 'view', $student['Child']['id'])); ?>
+			<?php echo $this->Html->link($student['Child']['full_name'], array('controller' => 'children', 'action' => 'view', $student['Child']['id'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $student['Student']['id'])); ?>
