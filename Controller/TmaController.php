@@ -42,9 +42,19 @@ class TmaController extends AppController{
 					)
 				)
 		));
+
+		$leads = $this->Child->find('count',array(
+			'conditions'=> array(
+			'AND' => array(
+					array('Child.is_enrolled' => '0'),
+					array('Child.is_graduate' => '0')
+					)
+				)
+		));
+
 		$school_Years3 = $this->SchoolYear->find('count');
 
-		$this->set(compact('tasks','events','school_Years','school_Years2','school_Years3'));
+		$this->set(compact('tasks','events','school_Years','school_Years2','school_Years3','leads'));
 	}  
 
 	public function report(){

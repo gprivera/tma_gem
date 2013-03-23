@@ -6,6 +6,7 @@
 		// echo $endDate;
 		// debug($school_Years);
 
+
 ?>
 
 <div>
@@ -81,9 +82,15 @@
 </div>
 <div>
 	number of enrolled students:
-		<?php echo $school_Years2 ?>
+		<?php echo $school_Years2; ?>
 		<br/>
 	over all number of students: 
-		<?php echo $school_Years3 ?>
+		<?php echo $school_Years3; ?>
+</div>
+
+<div>
+	Leads: <?php
+		echo $leads;
+	?>
 </div>
 </html>

@@ -1,3 +1,11 @@
+<?php
+
+	//debug($user);
+	//echo $user['Task']['id'];
+
+?>
+
+
 <div class="users view">
 <h2><?php  echo __('User'); ?></h2>
 	<dl>
@@ -91,21 +99,18 @@
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
-		$i = 0;
+	//debug($user);
 		foreach ($user['Task'] as $task): ?>
 		<tr>
-			<td><?php echo $task['id']; ?></td>
-			<td><?php echo $task['creator_id']; ?></td>
-			<td><?php echo $task['task']; ?></td>
-			<td><?php echo $task['is_accomplished']; ?></td>
-			<td><?php echo $task['user_id']; ?></td>
-			<td><?php echo $task['created']; ?></td>
-			<td><?php echo $task['modified']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'tasks', 'action' => 'view', $task['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'tasks', 'action' => 'edit', $task['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'tasks', 'action' => 'delete', $task['id']), null, __('Are you sure you want to delete # %s?', $task['id'])); ?>
-			</td>
+			<td><?php echo $task['id']; ?> </td>
+			<!-- <td><?php echo $task['id']; ?></td> -->
+			<!-- <td><?php echo $task['creator_id']; ?></td> -->
+			<!-- <td><?php echo $task['task']; ?></td> -->
+			<!-- <td><?php echo $task['is_accomplished']; ?></td> -->
+			<!-- <td><?php echo $task['user_id']; ?></td> -->
+			<!-- <td><?php echo $task['created']; ?></td> -->
+			<!-- <td><?php echo $task['modified']; ?></td> -->
+			
 		</tr>
 	<?php endforeach; ?>
 	</table>

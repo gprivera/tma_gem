@@ -8,13 +8,12 @@
 		echo $this->Form->input('entry_date');
 		echo $this->Form->input('child_id');
 	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+	</fieldset
+><?php echo $this->Form->end(__('Submit')); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-
 		<li><?php echo $this->Html->link(__('List Students'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Children'), array('controller' => 'children', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Child'), array('controller' => 'children', 'action' => 'add')); ?> </li>
@@ -29,4 +28,3 @@
 		<li><?php echo $this->Html->link(__('List Talents'), array('controller' => 'talents', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Talent'), array('controller' => 'talents', 'action' => 'add')); ?> </li>
 	</ul>
-</div>
