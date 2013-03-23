@@ -1,14 +1,3 @@
-<html>
-<?php
-	//debug($tasks);
-	//debug($events);
-		// $endDate = date('Y');
-		// echo $endDate;
-		// debug($school_Years);
-
-
-?>
-
 <div>
 	<table border="1">
 		<tr>
@@ -93,4 +82,60 @@
 		echo $leads;
 	?>
 </div>
-</html>
+
+
+	<h1>MY CODE!</h1>
+
+	<div class="dashboard">
+
+		<?php foreach($users as $user): ?>
+
+			<div class="user">
+				<h2><?php echo "{$user['User']['username']}"; ?></h2>
+
+
+				<div class="tasks">
+					<h3>Assigned Tasks</h3>
+					<strong>Completed Tasks: 	
+						<?php echo count($user['Task']) ?></strong>
+					<ul>
+					<?php foreach($user['Task'] as $task): ?>
+						<li><?php echo $task['task'] ?></li>
+					<?php endforeach; ?>	
+					</ul>
+					<!-- <strong>Pending Tasks: </strong>
+					<ul>
+					<!-- 		<?php
+								//debug($tasks1);
+								//echo $tasks1['id'];
+								
+							?>
+						<?php foreach ($tasks1 as $task1): ?>
+						<li><?php echo $task1['Task']['task'] ?></li>
+						<?php endforeach; ?> -->
+					</ul>
+				</div>
+				<div class="created-tasks">
+					<h3>Created Tasks</h3>
+					<ul>
+						<?php foreach($user['CreatedTasks'] as $task): ?>
+							<li><?php echo $task['task'] ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			</div>
+
+		<?php endforeach; ?>
+	</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+

@@ -4,9 +4,11 @@ App::uses('AppController', 'Controller');
 class TmaController extends AppController{
   
   
-	public $uses = array('Task','Event','Child','Student','SchoolYear');
+	public $uses = array('Task','Event','Child','Student','SchoolYear','User');
 
 	public function dashboard(){
+
+		$this->User->Behaviors->attach('Containable');
 
 		$tasks = $this->Task->find('all', array(
 			'conditions'=> array(
@@ -52,9 +54,30 @@ class TmaController extends AppController{
 				)
 		));
 
+		$users = $this->User->find('all',array(
+			'contain' => array(
+				'Task' => array(
+					'conditions' => array('is_accomplished' => true)
+				),
+				'CreatedTasks',
+			)
+		));
+
+	
+
+		$tasks1 = $this->User->find('all',array(
+			'contain' => array(
+				'Task' => array(
+					'conditions' => array('Task.is_accomplished' => false)
+				),
+				'CreatedTasks',
+			)
+		));
+		
+
 		$school_Years3 = $this->SchoolYear->find('count');
 
-		$this->set(compact('tasks','events','school_Years','school_Years2','school_Years3','leads'));
+		$this->set(compact('tasks','events','school_Years','school_Years2','school_Years3','leads','users','tasks1'));
 	}  
 
 	public function report(){

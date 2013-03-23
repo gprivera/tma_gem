@@ -7,11 +7,11 @@ class Task extends AppModel {
       'User' => array(
         'className' => 'User',
         'foreignKey' => 'user_id',
-        'counterCache' => array(
-            'tasks_accomplished' => array(
-                'Task.is_accomplished' => 1
-              )
-          )
+        // 'counterCache' => array(
+        //     'tasks_accomplished' => array(
+        //         'Task.is_accomplished' => 1
+        //       )
+        //   )
       ),
       'Creator' => array(
         'className' => 'User',

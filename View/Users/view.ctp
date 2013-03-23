@@ -1,11 +1,3 @@
-<?php
-
-	//debug($user);
-	//echo $user['Task']['id'];
-
-?>
-
-
 <div class="users view">
 <h2><?php  echo __('User'); ?></h2>
 	<dl>
@@ -44,46 +36,7 @@
 		<li><?php echo $this->Html->link(__('New Task'), array('controller' => 'tasks', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-	<div class="related">
-		<h3><?php echo __('Related Tasks'); ?></h3>
-	<?php if (!empty($user['Task'])): ?>
-		<dl>
-			<dt><?php echo __('Id'); ?></dt>
-		<dd>
-	<?php echo $user['Task']['id']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Creator Id'); ?></dt>
-		<dd>
-	<?php echo $user['Task']['creator_id']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Task'); ?></dt>
-		<dd>
-	<?php echo $user['Task']['task']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Is Accomplished'); ?></dt>
-		<dd>
-	<?php echo $user['Task']['is_accomplished']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('User Id'); ?></dt>
-		<dd>
-	<?php echo $user['Task']['user_id']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-	<?php echo $user['Task']['created']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-	<?php echo $user['Task']['modified']; ?>
-&nbsp;</dd>
-		</dl>
-	<?php endif; ?>
-		<div class="actions">
-			<ul>
-				<li><?php echo $this->Html->link(__('Edit Task'), array('controller' => 'tasks', 'action' => 'edit', $user['Task']['id'])); ?></li>
-			</ul>
-		</div>
-	</div>
+
 	<div class="related">
 	<h3><?php echo __('Related Tasks'); ?></h3>
 	<?php if (!empty($user['Task'])): ?>
@@ -99,17 +52,17 @@
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
-	//debug($user);
+	
 		foreach ($user['Task'] as $task): ?>
 		<tr>
 			<td><?php echo $task['id']; ?> </td>
-			<!-- <td><?php echo $task['id']; ?></td> -->
-			<!-- <td><?php echo $task['creator_id']; ?></td> -->
-			<!-- <td><?php echo $task['task']; ?></td> -->
-			<!-- <td><?php echo $task['is_accomplished']; ?></td> -->
-			<!-- <td><?php echo $task['user_id']; ?></td> -->
-			<!-- <td><?php echo $task['created']; ?></td> -->
-			<!-- <td><?php echo $task['modified']; ?></td> -->
+			<td><?php echo $task['id']; ?></td>
+			<td><?php echo $task['creator_id']; ?></td>
+			<td><?php echo $task['task']; ?></td>
+			<td><?php echo $task['is_accomplished']; ?></td>
+			<td><?php echo $task['user_id']; ?></td>
+			<td><?php echo $task['created']; ?></td>
+			<td><?php echo $task['modified']; ?></td>
 			
 		</tr>
 	<?php endforeach; ?>

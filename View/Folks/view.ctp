@@ -289,7 +289,7 @@
 		<th><?php echo __('Given Name'); ?></th>
 		<th><?php echo __('Address'); ?></th>
 		<th><?php echo __('Birthdate'); ?></th>
-		<th><?php echo __('Age'); ?></th>
+	
 		<th><?php echo __('Religion'); ?></th>
 		<th><?php echo __('Folk Id'); ?></th>
 		<th><?php echo __('Is Enrolled'); ?></th>
@@ -305,7 +305,7 @@
 			<td><?php echo $child['given_name']; ?></td>
 			<td><?php echo $child['address']; ?></td>
 			<td><?php echo $child['birthdate']; ?></td>
-			<td><?php echo $child['age']; ?></td>
+
 			<td><?php echo $child['religion']; ?></td>
 			<td><?php echo $child['folk_id']; ?></td>
 			<td><?php echo $child['is_enrolled']; ?></td>

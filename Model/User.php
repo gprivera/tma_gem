@@ -11,6 +11,8 @@ class User extends AppModel {
 
 	public $displayField = 'username';
 
+	
+
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 public function beforeSave($options = array()) {
@@ -20,13 +22,6 @@ public function beforeSave($options = array()) {
         return true;
     }
 
-	public $hasOne = array(
-	  'Task' => array(
-	    'className' => 'Task',
-	    'foreignKey' => 'creator_id',
-	    'dependent' => false
-	  )
-	);
 
 /**
  * belongsTo associations
@@ -61,7 +56,11 @@ public function beforeSave($options = array()) {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)
+		),
+	    'CreatedTasks' => array(
+	      'className' => 'Task',
+	      'foreignKey' => 'creator_id'
+	    )
 	);
 
 }
