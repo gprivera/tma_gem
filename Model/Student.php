@@ -13,6 +13,8 @@ App::uses('AppModel', 'Model');
 class Student extends AppModel {
 
 
+public $displayField = 'student_number';
+
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**

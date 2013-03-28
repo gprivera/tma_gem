@@ -84,7 +84,14 @@
 </div>
 
 
-	<h1>MY CODE!</h1>
+<?php
+
+$role = $this->Session->read('Auth.User.role_id');
+
+if ($role != 1){
+	
+}else { ?>
+	
 
 	<div class="dashboard">
 
@@ -128,7 +135,7 @@
 		<?php endforeach; ?>
 	</div>
 
-
+<?php } ?>
 
 
 

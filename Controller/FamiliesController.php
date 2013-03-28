@@ -8,9 +8,8 @@ class FamiliesController extends AppController{
 
 	public function index(){
 
-		$folks = $this->Folk->find('all');
-
-	$this->set(compact('folks','children','coops','CoopMember','participants','events','requirements','rerequisites'));
+	$folks = $this->Folk->find('all');
+	$this->set('folks',$this->paginate());
 	}
 	
 	public function view($id = null) {

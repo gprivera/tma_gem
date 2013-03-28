@@ -1,9 +1,10 @@
 <div class="tasks form">
+
 <?php echo $this->Form->create('Task'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Task'); ?></legend>
 	<?php
-		echo $this->Form->input('creator_id');
+	
 		echo $this->Form->input('task');
 		echo $this->Form->input('is_accomplished');
 		echo $this->Form->input('user_id');

@@ -40,6 +40,7 @@ class TasksController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Task->create();
+			$this->request->data['Task']['creator_id'] = $this->Session->read('Auth.User.id');
 			if ($this->Task->save($this->request->data)) {
 				$this->Session->setFlash(__('The task has been saved'));
 				$this->redirect(array('action' => 'index'));

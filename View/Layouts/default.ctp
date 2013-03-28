@@ -38,8 +38,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	?>
 </head>
 <?php
+	// echo $this->User->role_id;
 	if($logged_user){
-		echo $logged_user;
+		echo $logged_user['username'];
+		echo "[".$logged_user['Role']['roles']."]";
+		
+
 		echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); 
 	}else{
 		

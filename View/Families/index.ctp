@@ -4,11 +4,12 @@
 		<tr>
 
 			
-			<th>Family Name</th>
+			<th><?php echo $this->Paginator->sort('surname'); ?></th>
+			
 			<th>Contact's Name</th>
 			<th>Email</th>
 			<th>Mobile Number</th>
-			<th>Office Number</th>
+
 		
 		
 	</tr>
@@ -28,9 +29,7 @@
 		<td>
 			<?php	echo h($folk['Folk']['mobile_number']); ?> </td>
 		</td>
-			<td>
-			<?php	echo h($folk['Folk']['office_number']); ?> </td>
-		</td>
+		
 		
 		
 	</tr>

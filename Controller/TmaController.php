@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class TmaController extends AppController{
   
   
-	public $uses = array('Task','Event','Child','Student','SchoolYear','User');
+	public $uses = array('Task','Event','Child','Student','SchoolYear','User','Talent');
 
 	public function dashboard(){
 
@@ -80,8 +80,11 @@ class TmaController extends AppController{
 		$this->set(compact('tasks','events','school_Years','school_Years2','school_Years3','leads','users','tasks1'));
 	}  
 
-	public function report(){
-		$this->set(compact('tasks','events','school_Years','school_Years2','school_Years3','children'));
+	public function report_talents(){
+
+		$talents = $this->Talent->find('all');
+
+		$this->set(compact('talents'));
 	}
 	
 
