@@ -1,4 +1,29 @@
 <div>
+
+	
+<div>
+		<table border="1">
+		<tr>
+			<th>Family</th>
+			<th>Training Schedule</th>
+			<th>Email</th>
+		
+	</tr>
+	<?php foreach ($schedules as $schedule): ?>
+	<tr>
+		<td>
+<?php echo $this->Html->link("{$schedule['Folk']['surname']},{$schedule['Folk']['given_name']} {$schedule['Folk']['middle_name']}", array('controller' => 'folks', 'action'=> 'view',$schedule['Folk']['id'])); ?>
+		&nbsp;</td> 
+		<td><?php echo h($schedule['Folk']['training']); ?>&nbsp;</td>
+		<td><?php echo h($schedule['Folk']['email']); ?>&nbsp;</td>
+		
+		
+	</tr>
+<?php endforeach; ?>
+	</table>
+</div>
+
+
 	<table border="1">
 		<tr>
 

@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class TmaController extends AppController{
   
   
-	public $uses = array('Task','Event','Child','Student','SchoolYear','User','Talent');
+	public $uses = array('Task','Event','Child','Student','SchoolYear','User','Talent','Folk');
 
 	public function dashboard(){
 
@@ -73,11 +73,25 @@ class TmaController extends AppController{
 				'CreatedTasks',
 			)
 		));
+
+		$now = date('Y-m-d');
+		$ceiling = date('Y-m-d', strtotime('+ 1 week'));
+
+		// debug($now);
+		// debug($ceiling);
 		
+		$schedules = $this->Folk->find('all',array(
+				'conditions' => array(
+					'AND' => array(
+						array('training >=' => $now),	
+						array('training <='=> $ceiling),	
+						)
+					),
+			));
 
 		$school_Years3 = $this->SchoolYear->find('count');
 
-		$this->set(compact('tasks','events','school_Years','school_Years2','school_Years3','leads','users','tasks1'));
+		$this->set(compact('tasks','events','school_Years','school_Years2','school_Years3','leads','users','tasks1','schedules'));
 	}  
 
 	public function report_talents(){
