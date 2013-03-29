@@ -21,7 +21,17 @@ class FamiliesController extends AppController{
 	}
 
 	public function add(){
+		if ($this->request->is('post')) {
+			
 
-		
+			$this->Folk->Child->create();
+			if ($this->Folk->Child->saveAll($this->request->data	) ){
+				$this->Session->setFlash(__('The folk has been saved'));
+				
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The folk could not be saved. Please, try again.'));
+			}
+		}
 	}
 }

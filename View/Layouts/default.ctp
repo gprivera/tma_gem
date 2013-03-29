@@ -37,20 +37,21 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->fetch('script');
 	?>
 </head>
+<div class="head">
+	
 <?php
+	//debug($this->validationErrors);
 	// echo $this->User->role_id;
 	if($logged_user){
 		echo $logged_user['username'];
-		echo "[".$logged_user['Role']['roles']."]";
-		
-
+		echo " [".$logged_user['Role']['roles']."] ";
 		echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); 
 	}else{
 		
 		echo $this->Html->link(__('Login'), array('controller' => 'users', 'action' => 'login')); 
 	}
 ?>
-
+</div>
 <body>
 	<div id="container">
 		<div id="content">

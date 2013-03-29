@@ -100,4 +100,16 @@ class TasksController extends AppController {
 		$this->Session->setFlash(__('Task was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+	public function approve($id = null){
+		$this->Task->id = $id;
+		if (!$this->Task->exists()) {
+			throw new NotFoundException(__('Invalid task'));
+		}
+
+		$this->Task->saveField('is_accomplished', true);
+
+		$this->Session->setFlash(__('Task has been approved!'));
+		$this->redirect('/tma/dashboard');
+	}
 }

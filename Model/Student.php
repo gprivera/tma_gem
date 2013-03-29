@@ -105,4 +105,18 @@ public $displayField = 'student_number';
 		)
 	);
 
+public $validate = array(
+    'student_number' => array(
+        'required' => array(
+            'rule' => array('notEmpty'),
+            'message' => 'You must enter a student_number.'
+        ),
+        'unique' => array(
+            'rule'    => 'isUnique',
+            'message' => 'This student number has already been taken.'
+        ),
+        )
+);
+
+
 }

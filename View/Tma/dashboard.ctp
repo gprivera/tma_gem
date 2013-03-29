@@ -12,8 +12,7 @@
 	<?php foreach ($schedules as $schedule): ?>
 	<tr>
 		<td>
-<?php echo $this->Html->link("{$schedule['Folk']['surname']},{$schedule['Folk']['given_name']} {$schedule['Folk']['middle_name']}", array('controller' => 'folks', 'action'=> 'view',$schedule['Folk']['id'])); ?>
-		&nbsp;</td> 
+<?php echo $this->Html->link("{$schedule['Folk']['surname']},{$schedule['Folk']['given_name']} {$schedule['Folk']['middle_name']}", array('controller' => 'folks', 'action'=> 'view',$schedule['Folk']['id']));?>		&nbsp;</td> 
 		<td><?php echo h($schedule['Folk']['training']); ?>&nbsp;</td>
 		<td><?php echo h($schedule['Folk']['email']); ?>&nbsp;</td>
 		
@@ -29,12 +28,13 @@
 
 			
 			<th>Task</th>
-			<th>Is Accomplished</th>
+			<th>Status</th>
 			<th>User</th>
 			<th>Due Date</th>
 			<th>Created</th>
 			<th>Modified</th>
 			<th>Creator</th>
+			<th>Completed</th>
 		
 	</tr>
 	<?php foreach ($tasks as $task): ?>
@@ -46,9 +46,8 @@
 			<?php echo h($task['Task']['is_accomplished']); ?>
 			<?php
 				if (($task['Task']['is_accomplished'] == "")){
-					echo "Pending";
-				}else{
-
+					$status = "Pending";
+					echo $this->Html->link($status, array('controller' => 'tasks', 'action' => 'approve', $task['Task']['id']));
 				}
 
 			?>
@@ -62,6 +61,9 @@
 		<td><?php echo h($task['Task']['modified']); ?>&nbsp;</td>
 			<td>
 			<?php echo $this->Html->link($task['Creator']['username'], array('controller' => 'users', 'action' => 'view', $task['Creator']['id'])); ?>
+		</td>
+		<td>
+			<?php echo "done"; ?>
 		</td>
 		
 	</tr>
