@@ -50,18 +50,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->link(__('Login'), array('controller' => 'users', 'action' => 'login')); 
 	}
 ?>
-</br>
-<a href="/families">family</a>
-<a href="/folks">folks</a>
-<a href="/children">family</a>
-<a href="/coop_members">family</a>
-<a href="/coop">family</a>
-<a href="answers">family</a>
-<a href="">family</a>
-<a href="">family</a>
-<a href="">family</a>
-<a href="">family</a>
-<a href="">family</a>
+
 <body>
 	<div id="container">
 		<div id="content">
