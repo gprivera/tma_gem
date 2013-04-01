@@ -113,12 +113,7 @@
 
 <?php
 
-$role = $this->Session->read('Auth.User.role_id');
-
-if ($role != 1){
-	
-}else { ?>
-	
+$role = $this->Session->read('Auth.User.role_id'); ?>
 
 	<div class="dashboard">
 
@@ -161,9 +156,6 @@ if ($role != 1){
 
 		<?php endforeach; ?>
 	</div>
-
-<?php } ?>
-
 
 
 

@@ -32,7 +32,7 @@ class Child extends AppModel {
  *
  * @var array
  */
-	public $hasMany = array(
+	public $hasOne = array(
 		'Student' => array(
 			'className' => 'Student',
 			'foreignKey' => 'child_id',
