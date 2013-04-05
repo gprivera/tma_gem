@@ -1,15 +1,16 @@
+<div>
+<h2> Family: <?php echo h($folk['Folk']['surname']) ?> </h2>
+</div>
+<div>
+<table border="1">
+	<th><?php echo h($folk['Folk']['image']); ?></th>
+</table>
+</div>
 
 <div class="folks view">
-	
-<h2><?php  echo __('Families'); ?></h2>
 <table border ="1">
 	<td>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['id']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Surname'); ?></dt>
 		<dd>
 			<?php echo h($folk['Folk']['surname']); ?>
@@ -70,11 +71,6 @@
 			<?php echo h($folk['Folk']['gender']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Image'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['image']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Training'); ?></dt>
 		<dd>
 			<?php echo h($folk['Folk']['training']); ?>
@@ -83,7 +79,8 @@
 	</dl>
 </td>
 </table>
-</div>
+</div> <a href='/folks/edit/<?php echo $folk['Folk']['id']?>'> adsa</a>
+<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $folk['Folk']['id'])); ?>
 
 <div class="related">
 	<h3><?php echo __('Related Answers'); ?></h3>

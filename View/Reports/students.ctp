@@ -2,7 +2,7 @@
 <p>
 <?php echo $this->Html->link('Students', array('controller' => 'reports', 'action' => 'students', '')); ?> &nbsp;
 <?php echo $this->Html->link('Enrolled Student', array('controller' => 'reports', 'action' => 'students', 'enrolled_students')); ?> &nbsp;
-<?php echo $this->Html->link('Enrolled Student By Level', array('controller' => 'reports', 'action' => 'students', 'enrolled_level')); ?> &nbsp;
+<?php echo $this->Html->link('Enrolled Student: level', array('controller' => 'reports','action'=> 'students', 'level')); ?> &nbsp;
 <br/>
 <?php
 	echo $id;
@@ -45,6 +45,7 @@ if($id == null){ ?>
 
 
 <div>
+
 <?php }elseif($id == "enrolled_students"){
 	?>
 
@@ -87,6 +88,9 @@ if($id == null){ ?>
 </table>
 </div>
 
+<div>
+	
+<?php }elseif($id == "level"){ ?>
 
 <?php } ?>
 	

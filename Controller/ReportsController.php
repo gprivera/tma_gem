@@ -24,8 +24,6 @@ public $uses = array('Talent','Student','SchoolYear','Level');
 			)
 			));
 
-
-
 		$countStudents = $this->Student->find('count');
 
 		$enrollmentDate = date('Y', strtotime('-1 year'));
@@ -41,15 +39,32 @@ public $uses = array('Talent','Student','SchoolYear','Level');
 			'contain' => array(
 				'Level',
 				'Student'  => array(
-					'Child'
+					'Child',
+					'Talent'
 				),
 
 				
 			)
 		));
    		
-   		
+   	$talents = $this->SchoolYear->find('all',array(
+			'conditions'=> array(
+			'OR' => array(
+				array('SchoolYear.enrollment_date LIKE' => $enrollmentDate.'%'),
+				array('SchoolYear.enrollment_date LIKE' => $endDate.'%')
+				)
+			),
+			'contain' => array(
+				'Level',
+				'Student'  => array(
+					'Child',
+					'Talent',
+				),
 
-		$this->set(compact('students', $this->paginate(), 'id','countStudents','schoolYears'));
+				
+			)
+		));
+
+		$this->set(compact('students', $this->paginate(), 'id','countStudents','schoolYears','talents'));
 	}
 }

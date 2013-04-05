@@ -1,6 +1,6 @@
 <div class="children index">
 	<h2><?php echo __('Children'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table cellpadding="0" cellspacing="0" border="1">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('surname'); ?></th>
@@ -13,6 +13,8 @@
 			<th><?php echo $this->Paginator->sort('is_enrolled'); ?></th>
 			<th><?php echo $this->Paginator->sort('is_graduate'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th></th>
+
 	</tr>
 	<?php foreach ($children as $child): ?>
 	<tr>
@@ -32,8 +34,26 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $child['Child']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $child['Child']['id'])); ?>
+
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $child['Child']['id']), null, __('Are you sure you want to delete # %s?', $child['Child']['id'])); ?>
-		</td>
+		</td><td>
+		<?php
+	$enrolled = $child['Child']['is_enrolled'];
+	$graduate = $child['Child']['is_graduate'];
+	if ($enrolled == 1){
+		echo " ENROLLED ";
+	}else {
+		echo $this->Html->link(__(' Enroll '), array('action' => 'enroll', $child['Child']['id']));
+	}
+	if ($graduate == 1){
+		echo " GRADUATE ";
+	}else {
+		echo $this->Html->link(__(' Graduate '), array('action' => 'graduate', $child['Child']['id']));
+	}
+
+?>
+			
+</td>
 	</tr>
 <?php endforeach; ?>
 	</table>

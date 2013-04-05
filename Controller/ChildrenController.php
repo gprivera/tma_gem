@@ -98,4 +98,31 @@ class ChildrenController extends AppController {
 		$this->Session->setFlash(__('Child was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+	public function enroll($id = null){
+		$this->Child->id = $id;
+		if (!$this->Child->exists()) {
+			throw new NotFoundException(__('Invalid Child'));
+		}
+
+		$this->Child->saveField('is_enrolled', true);
+		$this->Child->saveField('is_graduate', false);
+
+		$this->Session->setFlash(__('Task has been approved!'));
+		$this->redirect('/tma/dashboard');
+	}
+
+	public function graduate($id = null){
+		$this->Child->id = $id;
+		if (!$this->Child->exists()) {
+			throw new NotFoundException(__('Invalid Child'));
+		}
+
+		$this->Child->saveField('is_graduate', true);
+		$this->Child->saveField('is_enrolled', false);
+
+
+		$this->Session->setFlash(__('Task has been approved!'));
+		$this->redirect('/tma/dashboard');
+	}
 }
