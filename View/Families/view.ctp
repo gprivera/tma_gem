@@ -1,16 +1,21 @@
 <div>
 <h2> Family: <?php echo h($folk['Folk']['surname']) ?> </h2>
+
 </div>
 <div>
-<table border="1">
-	<th><?php echo h($folk['Folk']['image']); ?></th>
-</table>
-</div>
+
 
 <div class="folks view">
 <table border ="1">
 	<td>
 	<dl>
+		<dt>
+				<table border="1">
+	<th><?php echo $this->Html->image("/f_profile/{$folk['Folk']['image']}",array('height'=>'300px','width'=>'300px')); ?></th>
+</table>
+</div>
+
+		</dt>
 		<dt><?php echo __('Surname'); ?></dt>
 		<dd>
 			<?php echo h($folk['Folk']['surname']); ?>
@@ -80,12 +85,11 @@
 </td>
 </table>
 </div> <a href='/folks/edit/<?php echo $folk['Folk']['id']?>'> adsa</a>
-<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $folk['Folk']['id'])); ?>
 
 <div class="related">
 	<h3><?php echo __('Related Answers'); ?></h3>
 	<?php if (!empty($folk['Answer'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table cellpadding = "0" cellspacing = "0" border="1">
 	<tr>
 
 		<th><?php echo __('Question Id'); ?></th>
@@ -111,14 +115,14 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Answer'), array('controller' => 'answers', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Answer'), array('controller' => 'Answers','action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>
 <div class="related">
 	<h3><?php echo __('Related Coop Members'); ?></h3>
 	<?php if (!empty($folk['CoopMember'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table cellpadding = "0" cellspacing = "0" border="1">
 	<tr>
 		
 		<th><?php echo __('Coop Id'); ?></th>
@@ -187,7 +191,7 @@
 <div class="related">
 	<h3><?php echo __('Related Notifications'); ?></h3>
 	<?php if (!empty($folk['Notification'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table cellpadding = "0" cellspacing = "0" border="1">
 	<tr>
 
 		<th><?php echo __('Notification'); ?></th>
@@ -224,7 +228,7 @@
 <div class="related">
 	<h3><?php echo __('Related Participants'); ?></h3>
 	<?php if (!empty($folk['Participant'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table cellpadding = "0" cellspacing = "0" border="1">
 	<tr>
 
 		<th><?php echo __('Event Id'); ?></th>
@@ -257,7 +261,7 @@
 <div class="related">
 	<h3><?php echo __('Related Children'); ?></h3>
 	<?php if (!empty($folk['Child'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table cellpadding = "0" cellspacing = "0" border="1">
 	<tr>
 		
 		<th><?php echo __('Surname'); ?></th>
@@ -295,7 +299,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Child'), array('controller' => 'children', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Child'), array('controller' => 'families','action' => 'addChild')); ?> </li>
 		</ul>
 	</div>
 </div>

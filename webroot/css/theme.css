@@ -42,3 +42,60 @@ fieldset{
 	text-align: center;
 
 }
+
+input{
+	padding: 2px;
+	outline: blue;
+}
+
+.third-menu {
+  position: absolute;
+  top: 0px;
+  right: -150px;
+  width: 150px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+.third-menu li {
+  height: 30px;
+  line-height: 30px;
+  background: #999999;
+}
+.third-menu li:hover { background: #CCCCCC; }
+
+.sub-menu {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 150px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+.sub-item {
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  background: #999999;
+}
+.sub-item:hover { background: #CCCCCC; }
+.sub-item:hover .third-menu { display: inline; }
+
+#menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.menu-item {
+  position: relative;
+  float: left;
+  height: 30px;
+  width: 120px;
+  line-height: 30px;
+  background: #999999;
+}
+.menu-item:hover { background: #CCCCCC; }
+.menu-item:hover .sub-menu { display: inline; }

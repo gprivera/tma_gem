@@ -1,3 +1,7 @@
+<?php
+	debug($sample);
+?>
+
 <div class="children form">
 <?php echo $this->Form->create('Child'); ?>
 	<fieldset>

@@ -4,7 +4,7 @@
 		<legend><?php echo __('Add Student'); ?></legend>
 	<?php
 		echo $this->Form->input('student_number');
-		echo $this->Form->input('image');
+		echo $this->Form->input('image',array('type' => 'file'));
 		echo $this->Form->input('entry_date');
 		echo $this->Form->input('child_id');
 	?>

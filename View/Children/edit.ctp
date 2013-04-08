@@ -9,7 +9,6 @@
 		echo $this->Form->input('given_name');
 		echo $this->Form->input('address');
 		echo $this->Form->input('birthdate');
-		echo $this->Form->input('age');
 		echo $this->Form->input('religion');
 		echo $this->Form->input('folk_id');
 		echo $this->Form->input('is_enrolled');

@@ -3,6 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Answer'); ?></legend>
 	<?php
+		$id = "2";
 		echo $this->Form->input('folk_id');
 		echo $this->Form->input('question_id');
 		echo $this->Form->input('answer');

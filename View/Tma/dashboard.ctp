@@ -1,6 +1,100 @@
-<div>
-
+<html>
 	
+<?php
+$size=count($dates);
+$size--;
+
+?>
+	<head>
+				<script type="text/javascript">
+                    $(function () {
+                        var chart;
+                        $(document).ready(function() {
+                        
+                            var colors = Highcharts.getOptions().colors,
+                                categories = ['School Years'],
+                                name = 'Click bar to view breakdown',
+                                data = [{
+                                        y: <?php echo($overall);?>, //total
+                                        color: colors[0],
+                                        drilldown: {
+                                            name: 'School Years',
+                                            categories: [<?php foreach ($dates as $i => $value) {
+                                                if($i==$size){
+                                                    echo("'$dates[$i]'");
+                                                }else{
+                                                    echo("'$dates[$i]',");
+                                                }
+                                            }?>],
+                                            data: [<?php foreach ($enrolled as $i => $value) {
+                                                if($i==$size){
+                                                    echo("$enrolled[$i]");
+                                                }else{
+                                                    echo("$enrolled[$i],");
+                                                }
+                                            }?>],
+                                            color: colors[0]
+                                        }
+                                    }];
+                        
+                            function setChart(name, categories, data, color) {
+                                chart.xAxis[0].setCategories(categories, false);
+                                chart.series[0].remove(false);
+                                chart.addSeries({name: name, data: data, color: color || 'white' }, false);
+                                chart.redraw();
+                            }
+                        
+                            chart = new Highcharts.Chart({
+                                chart: { renderTo: 'results', type: 'column' },
+                                credits: {enabled: false},
+                                title: { text: 'Overall Students Enrolled' },
+                                subtitle: { text: '# of students enrolled at TMA' },
+                                xAxis: { categories: categories},
+                                yAxis: { title: { text: '# of students enrolled' } },
+                                plotOptions: { column: { cursor: 'pointer', point: { events: {
+                                                click: function() {
+                                                    var drilldown = this.drilldown;
+                                                    if (drilldown) { // drill down
+                                                        setChart(drilldown.name, drilldown.categories, drilldown.data, drilldown.color);
+                                                    } else { // restore
+                                                        setChart(name, categories, data);
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        dataLabels: {
+                                            enabled: true, color: colors[0], style: { fontWeight: 'bold' },
+                                            formatter: function() { return this.y +''; }
+                                        }
+                                    }
+                                },
+                                tooltip: {
+                                    formatter: function() {
+                                        var point = this.point,
+                                            s = this.x +':<b>'+ this.y +'</b><br/>';
+                                        if (point.drilldown) {
+                                            s += 'Click to view '+ point.category +'';
+                                        } else {
+                                            s += 'Click to return to Overall';
+                                        }
+                                        return s;
+                                    }
+                                },
+                                series: [{
+                                    name: name,
+                                    data: data,
+                                    color: 'white'
+                                }],
+                                exporting: {
+                                    enabled: false
+                                }
+                            });
+                        });
+                        
+                    });
+                </script>
+	</head>
+<div>	
 <div>
 		<table border="1">
 		<tr>
@@ -12,6 +106,7 @@
 	<?php foreach ($schedules as $schedule): ?>
 	<tr>
 		<td>
+
 <?php echo $this->Html->link("{$schedule['Folk']['surname']},{$schedule['Folk']['given_name']} {$schedule['Folk']['middle_name']}", array('controller' => 'folks', 'action'=> 'view',$schedule['Folk']['id']));?>		&nbsp;</td> 
 		<td><?php echo h($schedule['Folk']['training']); ?>&nbsp;</td>
 		<td><?php echo h($schedule['Folk']['email']); ?>&nbsp;</td>
@@ -121,7 +216,7 @@ $role = $this->Session->read('Auth.User.role_id'); ?>
 
 			<div class="user">
 				<h2><?php echo "{$user['User']['username']}"; ?></h2>
-
+	
 
 				<div class="tasks">
 					<h3>Assigned Tasks</h3>
@@ -155,13 +250,11 @@ $role = $this->Session->read('Auth.User.role_id'); ?>
 			</div>
 
 		<?php endforeach; ?>
+
 	</div>
-
-
-
-
-
-
-
 </div>
+ <div id="graph">
+            <div id="results" style="width: 100%; height: 70%; margin: 0 auto"></div>
+        </div>
 
+</html>

@@ -3,13 +3,20 @@ App::uses('AppController', 'Controller');
 
 class ReportsController extends AppController {
 
-public $uses = array('Talent','Student','SchoolYear','Level');
+public $uses = array('Talent','Student','SchoolYear','Level','Folk');
 
 
 	public function index() {
 		$this->Talent->recursive = 0;
 	$talents = $this->Talent->find('all');
 	$this->set('talents',$this->paginate());
+	}
+
+	public function parents(){
+		$folks = $this->Folk->find('all');
+		
+		$this->set(compact('students', $this->paginate(), 'id','folks','countStudents','schoolYears'));
+
 	}
 
 	public function students($id = null){
@@ -47,24 +54,10 @@ public $uses = array('Talent','Student','SchoolYear','Level');
 			)
 		));
    		
-   	$talents = $this->SchoolYear->find('all',array(
-			'conditions'=> array(
-			'OR' => array(
-				array('SchoolYear.enrollment_date LIKE' => $enrollmentDate.'%'),
-				array('SchoolYear.enrollment_date LIKE' => $endDate.'%')
-				)
-			),
-			'contain' => array(
-				'Level',
-				'Student'  => array(
-					'Child',
-					'Talent',
-				),
 
-				
-			)
-		));
+   	
+		
 
-		$this->set(compact('students', $this->paginate(), 'id','countStudents','schoolYears','talents'));
+		$this->set(compact('students', $this->paginate(), 'id','folks','countStudents','schoolYears'));
 	}
 }

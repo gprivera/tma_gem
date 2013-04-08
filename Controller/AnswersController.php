@@ -7,6 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class AnswersController extends AppController {
 
+
 /**
  * index method
  *
@@ -38,8 +39,11 @@ class AnswersController extends AppController {
  * @return void
  */
 	public function add() {
+		
+			
 		if ($this->request->is('post')) {
 			$this->Answer->create();
+			debug($this->request->data['Answer']['folk_id']);
 			if ($this->Answer->save($this->request->data)) {
 				$this->Session->setFlash(__('The answer has been saved'));
 				$this->redirect(array('action' => 'index'));

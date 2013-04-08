@@ -1,4 +1,6 @@
 <?php
+mysql_connect("localhost","root","gemeuber") or die(mysql_error());
+mysql_select_db("tma") or die(mysql_error());
 
 App::uses('AppController', 'Controller');
 class TmaController extends AppController{
@@ -7,6 +9,26 @@ class TmaController extends AppController{
 	public $uses = array('Task','Event','Child','Student','SchoolYear','User','Talent','Folk');
 
 	public function dashboard(){
+
+		$lastDate = date('Y');
+		$dates = array();
+		$enrolled = array();
+		$j=0;
+
+		$query = mysql_query("select count(id) from school_years");
+		$overall = mysql_result($query,0);
+
+		for($i=1999;$i<=$lastDate;$i++){
+			$k=$i+1;
+			$query = mysql_query("select count(id) from school_years where enrollment_date>='$i/1/1' AND enrollment_date<'$k/1/1'");
+			$enrolled[$j] = mysql_result($query,0);
+		
+			$dates[$j] = "$i - $k";
+			$j++;
+		}
+
+
+		/*charts_endline*/
 
 		$this->User->Behaviors->attach('Containable');
 
@@ -91,7 +113,7 @@ class TmaController extends AppController{
 
 		$school_Years3 = $this->SchoolYear->find('count');
 
-		$this->set(compact('tasks','events','school_Years','school_Years2','school_Years3','leads','users','tasks1','schedules'));
+		$this->set(compact('tasks','dates','enrolled','overall','events','school_Years','school_Years2','school_Years3','leads','users','tasks1','schedules'));
 	}  
 
 	public function report_talents(){

@@ -57,6 +57,7 @@ class FolksController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+
 		if (!$this->Folk->exists($id)) {
 			throw new NotFoundException(__('Invalid folk'));
 		}

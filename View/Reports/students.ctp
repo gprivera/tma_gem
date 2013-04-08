@@ -3,6 +3,7 @@
 <?php echo $this->Html->link('Students', array('controller' => 'reports', 'action' => 'students', '')); ?> &nbsp;
 <?php echo $this->Html->link('Enrolled Student', array('controller' => 'reports', 'action' => 'students', 'enrolled_students')); ?> &nbsp;
 <?php echo $this->Html->link('Enrolled Student: level', array('controller' => 'reports','action'=> 'students', 'level')); ?> &nbsp;
+<?php echo $this->Html->link('Enrolled Student: talents', array('controller' => 'reports','action'=> 'students', 'talents')); ?> &nbsp;
 <br/>
 <?php
 	echo $id;
@@ -90,7 +91,9 @@ if($id == null){ ?>
 
 <div>
 	
-<?php }elseif($id == "level"){ ?>
+<?php }elseif($id == "talents"){ ?>
+<?php
 
+?>
 <?php } ?>
 	
