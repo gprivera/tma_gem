@@ -26,12 +26,9 @@ class FamiliesController extends AppController{
 		$url = $this->referer();
 		$explode = explode("/",$url);
 	
-		
-
-
 		if ($this->request->is('post')) {
 			$this->Child->create();
-			$this->Child->folk_id = "gauran, jaggy";
+		
 			if ($this->Child->save($this->request->data)) {
 				$this->Session->setFlash(__('The child has been saved'));
 				$this->redirect(array('action' => 'index'));

@@ -38,10 +38,7 @@ class ChildrenController extends AppController {
  * @return void
  */
 	public function add() {
-		$x = $this->referer();
-		$y = explode("/", $x);
-		$sample = $y[4];
-		$id = $y[5];
+	
 
 		if ($this->request->is('post')) {
 			$this->Child->create();
@@ -53,7 +50,7 @@ class ChildrenController extends AppController {
 			}
 		}
 		$folks = $this->Child->Folk->find('list');
-		$this->set(compact('folks','sample','id'));
+		$this->set(compact('folks'));
 	}
 
 /**
