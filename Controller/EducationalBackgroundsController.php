@@ -104,4 +104,35 @@ class EducationalBackgroundsController extends AppController {
 		$this->Session->setFlash(__('Educational background was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+
+	public function addEducationalBackground(){
+		$url = $this->referer();
+		$explode = explode("/",$url);
+
+
+
+		if ($this->request->is('post')) {
+			$this->EducationalBackground->create();
+			if ($this->EducationalBackground->save($this->request->data)) {
+				$this->Session->setFlash(__('The educational background has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The educational background could not be saved. Please, try again.'));
+			}
+		}
+		$levels = $this->EducationalBackground->Level->find('list');
+		$schoolYears = $this->EducationalBackground->SchoolYear->find('list');
+		
+		$students = $this->EducationalBackground->Student->find('list',array(
+				'conditions' => array(
+						'id' => $explode[5]
+					)
+			));
+
+		$schools = $this->EducationalBackground->School->find('list');
+		$this->set(compact('levels', 'schoolYears', 'students', 'schools'));
+
+	}
+
 }

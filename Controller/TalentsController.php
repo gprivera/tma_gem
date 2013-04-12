@@ -32,6 +32,29 @@ class TalentsController extends AppController {
 		$this->set('talent', $this->Talent->find('first', $options));
 	}
 
+	public function add_student(){
+		$url = $this->referer();
+		$explode = explode("/",$url);
+
+		if ($this->request->is('post')) {
+			$this->Talent->create();
+			if ($this->Talent->save($this->request->data)) {
+				$this->Session->setFlash(__('The talent has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The talent could not be saved. Please, try again.'));
+			}
+		}
+		
+		$students = $this->Talent->Student->find('list',array(
+				'conditions' => array(
+						'id' => $explode[5]
+					)
+			));
+		$this->set(compact('students'));
+
+	}
+
 /**
  * add method
  *

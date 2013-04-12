@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class StudentsController extends AppController {
 	
-public $uses = array('Student');
+public $uses = array('Student','Level','SchoolYear','School');
 
 /**
  * index method
@@ -41,13 +41,9 @@ public $uses = array('Student');
  * @return void
  */
 	public function add() {
-		
-			
 			
 		if ($this->request->is('post')) {
-			
-			
-
+		
 			$this->Student->create();
 			if ($this->Student->save($this->request->data)) {
 				$this->Session->setFlash(__('The student has been saved'));
@@ -107,6 +103,7 @@ public $uses = array('Student');
 		$this->Session->setFlash(__('Student was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
 
 
 

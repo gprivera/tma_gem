@@ -100,4 +100,27 @@ class StudentPrerequisitesController extends AppController {
 		$this->Session->setFlash(__('Student prerequisite was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+	public function add_student(){
+		$url = $this->referer();
+		$explode = explode("/",$url);
+
+		if ($this->request->is('post')) {
+			$this->StudentPrerequisite->create();
+			if ($this->StudentPrerequisite->save($this->request->data)) {
+				$this->Session->setFlash(__('The student prerequisite has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The student prerequisite could not be saved. Please, try again.'));
+			}
+		}
+		$requirements = $this->StudentPrerequisite->Requirement->find('list');
+		$students = $this->StudentPrerequisite->Student->find('list',array(
+				'conditions' => array(
+						'id' => $explode[5]
+					)
+			));
+
+		$this->set(compact('requirements', 'students'));
+	}
 }

@@ -104,6 +104,27 @@ class SchoolYearsController extends AppController {
 	public function addSchoolYear(){
 		$url = $this->referer();
 		$explode = explode("/",$url);
-		debug($explode);
+
+		if ($this->request->is('post')) {
+			$this->SchoolYear->create();
+		if ($this->SchoolYear->save($this->request->data)) {
+				$this->Session->setFlash(__('The school year has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The school year could not be saved. Please, try again.'));
+			}
+		}
+		
+		$students = $this->SchoolYear->Student->find('list',array(
+				'conditions' => array(
+						'id' => $explode[5]
+					)
+			));
+
+
+		$levels = $this->SchoolYear->Level->find('list');
+		$this->set(compact('students', 'levels'));
+
+
 	}
 }
