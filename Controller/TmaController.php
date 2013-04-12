@@ -40,12 +40,29 @@ class TmaController extends AppController{
 			)
 		));
 
+		$task_count = $this->Task->find('count', array(
+			'conditions'=> array(
+				'Task.user_id' => $this->Session->read('Auth.User.id'),
+				'Task.is_accomplished' => false
+				
+			)
+		));
+
+
 		$events = $this->Event->find('all', array(
 			'conditions'=> array(
 				'Event.event_date >= ' => date('Y-m-d')
 				
 			)
 		));
+
+		$event_count = $this->Event->find('count', array(
+			'conditions'=> array(
+				'Event.event_date >= ' => date('Y-m-d')
+				
+			)
+		));
+
 		$enrollmentDate = date('Y', strtotime('-1 year'));
 		$endDate = date('Y');
 
@@ -110,10 +127,18 @@ class TmaController extends AppController{
 						)
 					),
 			));
+		$schedule_count = $this->Folk->find('count',array(
+				'conditions' => array(
+					'AND' => array(
+						array('training >=' => $now),	
+						array('training <='=> $ceiling),	
+						)
+					),
+			));
 
 		$school_Years3 = $this->SchoolYear->find('count');
 
-		$this->set(compact('tasks','dates','enrolled','overall','events','school_Years','school_Years2','school_Years3','leads','users','tasks1','schedules'));
+		$this->set(compact('tasks','task_count','event_count','schedule_count','dates','enrolled','overall','events','school_Years','school_Years2','school_Years3','leads','users','tasks1','schedules'));
 	}  
 
 	public function report_talents(){

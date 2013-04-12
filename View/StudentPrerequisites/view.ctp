@@ -1,5 +1,7 @@
+
 <div class="studentPrerequisites view">
 <h2><?php  echo __('Student Prerequisite'); ?></h2>
+
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

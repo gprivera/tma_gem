@@ -6,6 +6,8 @@ App::uses('AppController', 'Controller');
  * @property Student $Student
  */
 class StudentsController extends AppController {
+	
+public $uses = array('Student');
 
 /**
  * index method
@@ -39,7 +41,13 @@ class StudentsController extends AppController {
  * @return void
  */
 	public function add() {
+		
+			
+			
 		if ($this->request->is('post')) {
+			
+			
+
 			$this->Student->create();
 			if ($this->Student->save($this->request->data)) {
 				$this->Session->setFlash(__('The student has been saved'));
@@ -49,7 +57,7 @@ class StudentsController extends AppController {
 			}
 		}
 		$children = $this->Student->Child->find('list');
-		$this->set(compact('children'));
+		$this->set(compact('children','filename'));
 	}
 
 /**
@@ -98,5 +106,32 @@ class StudentsController extends AppController {
 		}
 		$this->Session->setFlash(__('Student was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+
+
+
+	public function addnew(){
+		$url = $this->referer();
+		$explode = explode("/",$url);
+
+		if ($this->request->is('post')) {
+			$this->Student->create();
+			if ($this->Student->save($this->request->data)) {
+				$this->Session->setFlash(__('The student has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The student could not be saved. Please, try again.'));
+			}
+		}
+	
+
+		$children = $this->Student->Child->find('list',array(
+				'conditions' => array(
+						'id' => $explode[5]
+					)
+			));
+
+		$this->set(compact('children','filename','explode'));
+
 	}
 }

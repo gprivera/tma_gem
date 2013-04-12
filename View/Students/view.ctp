@@ -1,5 +1,6 @@
 <div class="students view">
 <h2><?php  echo __('Student'); ?></h2>
+<?php echo $this->Html->link(__('Add School Year'), array('controller' => 'schoolYears', 'action' => 'addSchoolYear')); ?>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

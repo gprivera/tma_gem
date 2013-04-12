@@ -19,6 +19,6 @@
  */
 ?>
 <CENTER>
-<H1> 404 PAGE CANNOT BE FOUND </H1>
-<h4> VINA SUCKS <P><font size='2px;'>bigtime</font></P></h4>
-</CENTER>
+	<h1>404 THIS PAGE IS NOT AVAILABLE
+		BUT DONATO IS :) 
+	</h1>

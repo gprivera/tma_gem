@@ -114,6 +114,24 @@ class ChildrenController extends AppController {
 		$this->redirect('/tma/dashboard');
 	}
 
+	public function enrollChild($id = null){
+
+		$url = $this->referer();
+		$explode = explode("/",$url);
+		$this->Child->id = $id;
+		if (!$this->Child->exists()) {
+			throw new NotFoundException(__('Invalid Child'));
+		}
+		$this->Child->saveField('is_enrolled', true);
+		$this->Child->saveField('is_graduate', false);
+
+		
+		$this->set(compact('explode'));
+		$this->redirect('/students/addnew');
+
+
+	}
+
 	public function graduate($id = null){
 		$this->Child->id = $id;
 		if (!$this->Child->exists()) {
@@ -125,6 +143,7 @@ class ChildrenController extends AppController {
 
 
 		$this->Session->setFlash(__('Task has been approved!'));
-		$this->redirect('/tma/dashboard');
+		$url = $this->referer();
+		$this->redirect($url);
 	}
 }

@@ -100,4 +100,10 @@ class SchoolYearsController extends AppController {
 		$this->Session->setFlash(__('School year was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+	public function addSchoolYear(){
+		$url = $this->referer();
+		$explode = explode("/",$url);
+		debug($explode);
+	}
 }

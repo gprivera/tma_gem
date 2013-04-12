@@ -24,6 +24,7 @@ class FolksController extends AppController {
  * @param string $id
  * @return void
  */
+
 	public function view($id = null) {
 		if (!$this->Folk->exists($id)) {
 			throw new NotFoundException(__('Invalid folk'));

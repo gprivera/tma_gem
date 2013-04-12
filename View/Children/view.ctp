@@ -1,5 +1,11 @@
 <div class="children view">
-<h2><?php  echo __('Child'); ?></h2>
+<h2><?php  echo __('Child'); ?>
+
+</h2>
+
+<?php echo $this->Html->link(__('Enroll Child'), array('controller' => 'children', 'action' => 'enrollChild', $child['Child']['id'])); ?>
+<?php echo $this->Html->link(__('Graduate'), array('controller' => 'children', 'action' => 'graduate', $child['Child']['id'])); ?>
+
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

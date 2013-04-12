@@ -100,7 +100,18 @@ $size--;
 		<tr>
 			<th>Family</th>
 			<th>Training Schedule</th>
-			<th>Email</th>
+			<th>Email
+			<?php
+			if ($schedule_count == 0){
+				echo "";
+			}else{
+				echo $schedule_count;
+			}
+			?>
+
+
+
+		</th>
 		
 	</tr>
 	<?php foreach ($schedules as $schedule): ?>
@@ -129,7 +140,16 @@ $size--;
 			<th>Created</th>
 			<th>Modified</th>
 			<th>Creator</th>
-			<th>Completed</th>
+			<th>Completed
+		<?php
+			if ($task_count == 0){
+				echo "";
+			}else{
+				echo $task_count;
+			}
+			?>
+
+			</th>
 		
 	</tr>
 	<?php foreach ($tasks as $task): ?>
@@ -172,8 +192,16 @@ $size--;
 	<tr>
 
 			<th>name</th>
-	
-			<th>date</th>
+			<th>date
+				<?php
+				if ($event_count == 0){
+				echo "";
+			}else{
+				echo $event_count;
+			}
+				?>
+
+			</th>
 			
 	</tr>
 	<?php foreach ($events as $event): ?>
