@@ -123,7 +123,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
      <?php echo $this->Html->link('Survey', array('controller' => 'questions', 'action' => 'index')); ?>
     <ul class="sub-menu">
       <li class="sub-item">
-        <?php echo $this->Html->link('Answers', array('controller' => 'questions', 'action' => 'add')); ?>
+        <?php echo $this->Html->link('Answers', array('controller' => 'answers', 'action' => 'add')); ?>
          <ul class="third-menu">
           <li><?php echo $this->Html->link('Add', array('controller' => 'answers', 'action' => 'add')); ?></li>
           <li><?php echo $this->Html->link('list', array('controller' => 'answers', 'action' => 'index')); ?></li>

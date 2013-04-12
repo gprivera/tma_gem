@@ -9,6 +9,7 @@ App::uses('AppModel', 'Model');
  */
 class Requirement extends AppModel {
 
+	public $DisplayField = 'requirement';
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 

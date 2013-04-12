@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <div>
 <h2> Family: <?php echo h($folk['Folk']['surname']) ?> </h2>
 
@@ -97,11 +101,17 @@
 		<th class="actions"><?php echo __('Actions'); ?></th>
 
 	</tr>
+
+
 	<?php
+
 		$i = 0;
 		foreach ($folk['Answer'] as $answer): ?>
+
 		<tr>
-			<td><?php echo $answer['question_id']; ?></td>
+			<td><?php echo $answer['question_id']; ?>
+
+			</td>
 			<td><?php echo $answer['answer']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'answers', 'action' => 'view', $answer['id'])); ?>
@@ -115,7 +125,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Answer'), array('controller' => 'Answers','action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Answer'), array('controller' => 'families','action' => 'addAnswer')); ?> </li>
 		</ul>
 	</div>
 </div>
@@ -149,7 +159,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Coop Member'), array('controller' => 'coop_members', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Coop Member'), array('controller' => 'families', 'action' => 'addCoop')); ?> </li>
 		</ul>
 	</div>
 </div>
@@ -184,7 +194,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Folk Prerequisite'), array('controller' => 'folk_prerequisites', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Folk Prerequisite'), array('controller' => 'families', 'action' => 'addPrerequisite')); ?> </li>
 		</ul>
 	</div>
 </div>
@@ -221,7 +231,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Notification'), array('controller' => 'notifications', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Notification'), array('controller' => 'families', 'action' => 'addNotification')); ?> </li>
 		</ul>
 	</div>
 </div>
@@ -299,6 +309,7 @@
 
 	<div class="actions">
 		<ul>
+
 			<li><?php echo $this->Html->link(__('New Child'), array('controller' => 'families','action' => 'addChild')); ?> </li>
 		</ul>
 	</div>

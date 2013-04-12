@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class FamiliesController extends AppController{
   
   
-	public $uses = array('Folk','Child','Question','Coop','CoopMember','Participant','Event','Requirement','Prerequisite','Anwer');
+	public $uses = array('Folk','Child','Question','Coop','Notification','CoopMember','Participant','Event','Requirement','Prerequisite','Answer','FolkPrerequisite');
 
 	public function index(){
 
@@ -13,13 +13,17 @@ class FamiliesController extends AppController{
 	}
 	
 	public function view($id = null) {
-
+		
 		if (!$this->Folk->exists($id)) {
 			throw new NotFoundException(__('Invalid folk'));
 		}
 		$options = array('conditions' => array('Folk.' . $this->Folk->primaryKey => $id));
 		$read = $this->Folk->find('first', $options);
-		$this->set('folk', $this->Folk->find('first', $options),'read');
+		$questions = "helloworld";
+	
+		$this->set('folk', $this->Folk->find('first', $options));
+
+
 	}
 
 	public function addChild(){
@@ -33,7 +37,31 @@ class FamiliesController extends AppController{
 				$this->Session->setFlash(__('The child has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The child could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The child $could not be saved. Please, try again.'));
+			}
+		}
+		
+		$folks = $this->Child->Folk->find('list',array(
+				'conditions' => array(
+						'id' => $explode[5]
+					)
+			));
+
+		$this->set(compact('folks','url','explode','name','fullname'));
+
+	}
+
+	public function addNotification(){
+		$url = $this->referer();
+		$explode = explode("/",$url);
+
+			if ($this->request->is('post')) {
+			$this->Notification->create();
+			if ($this->Notification->save($this->request->data)) {
+				$this->Session->setFlash(__('The notification has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The notification could not be saved. Please, try again.'));
 			}
 		}
 		$folks = $this->Child->Folk->find('list',array(
@@ -41,10 +69,82 @@ class FamiliesController extends AppController{
 						'id' => $explode[5]
 					)
 			));
-		$this->set(compact('folks','url','explode','name','fullname'));
+		$this->set(compact('folks','explode'));
+	}
+
+	public function addPrerequisite(){
+		$url = $this->referer();
+		$explode = explode("/",$url);
+
+		if ($this->request->is('post')) {
+			$this->FolkPrerequisite->create();
+			if ($this->FolkPrerequisite->save($this->request->data)) {
+				$this->Session->setFlash(__('The folk prerequisite has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The folk prerequisite could not be saved. Please, try again.'));
+			}
+		}
+		$requirements = $this->FolkPrerequisite->Requirement->find('list');
+		$folks = $this->Child->Folk->find('list',array(
+				'conditions' => array(
+						'id' => $explode[5]
+					)
+			));
+
+		$this->set(compact('requirements', 'folks','explode'));
 
 	}
+
+	public function addAnswer(){
+		$url = $this->referer();
+		$explode = explode("/",$url);
+
+		if ($this->request->is('post')) {
+			$this->Answer->create();
+			
+			if ($this->Answer->save($this->request->data)) {
+				$this->Session->setFlash(__('The answer has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The answer could not be saved. Please, try again.'));
+			}
+		}
+		$folks = $this->Answer->Folk->find('list',array(
+				'conditions' => array(
+						'id' => $explode[5]
+					)
+			));
+
+		$questions = $this->Answer->Question->find('list');
+		$this->set(compact('folks','questions','explode','url'));
+
+	}
+
+	public function addCoop() {
+		$url = $this->referer();
+		$explode = explode("/",$url);
+
+		if ($this->request->is('post')) {
+			$this->CoopMember->create();
+			if ($this->CoopMember->save($this->request->data)) {
+				$this->Session->setFlash(__('The coop member has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The coop member could not be saved. Please, try again.'));
+			}
+		}
+		$coops = $this->CoopMember->Coop->find('list');
+		$folks = $this->CoopMember->Folk->find('list',array(
+				'conditions' => array(
+						'id' => $explode[5]
+					)
+			));
+		
+		$this->set(compact('coops', 'folks','explode'));
 	
+
+	}
 
 	public function add(){
 		if ($this->request->is('post')) {
