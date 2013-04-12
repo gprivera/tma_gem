@@ -28,23 +28,7 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit School Year'), array('action' => 'edit', $schoolYear['SchoolYear']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete School Year'), array('action' => 'delete', $schoolYear['SchoolYear']['id']), null, __('Are you sure you want to delete # %s?', $schoolYear['SchoolYear']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List School Years'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New School Year'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Levels'), array('controller' => 'levels', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Level'), array('controller' => 'levels', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Assessments'), array('controller' => 'assessments', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Assessment'), array('controller' => 'assessments', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Educational Backgrounds'), array('controller' => 'educational_backgrounds', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Educational Background'), array('controller' => 'educational_backgrounds', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+
 <div class="related">
 	<h3><?php echo __('Related Assessments'); ?></h3>
 	<?php if (!empty($schoolYear['Assessment'])): ?>
@@ -88,7 +72,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Assessment'), array('controller' => 'assessments', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Assessment'), array('controller' => 'assessments', 'action' => 'addAssessment')); ?> </li>
 		</ul>
 	</div>
 </div>

@@ -6,7 +6,7 @@ App::uses('AppController', 'Controller');
 class TmaController extends AppController{
   
   
-	public $uses = array('Task','Event','Child','Student','SchoolYear','User','Talent','Folk');
+	public $uses = array('Task','Event','Child','Student','SchoolYear','User','Talent','Folk','Notification');
 
 	public function dashboard(){
 
@@ -137,8 +137,18 @@ class TmaController extends AppController{
 			));
 
 		$school_Years3 = $this->SchoolYear->find('count');
+		$notification_count = $this->Notification->find('count');
+		
 
-		$this->set(compact('tasks','task_count','event_count','schedule_count','dates','enrolled','overall','events','school_Years','school_Years2','school_Years3','leads','users','tasks1','schedules'));
+		$notifications = $this->Notification->find('all', array(
+			'conditions'=> array(
+				'Notification.date ' => date('Y-m-d')
+				
+			)
+		));
+
+
+		$this->set(compact('tasks','task_count','notifications','notification_count','event_count','schedule_count','dates','enrolled','overall','events','school_Years','school_Years2','school_Years3','leads','users','tasks1','schedules'));
 	}  
 
 	public function report_talents(){

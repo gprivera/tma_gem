@@ -50,6 +50,27 @@ class AssessmentsController extends AppController {
 		$schoolYears = $this->Assessment->SchoolYear->find('list');
 		$this->set(compact('schoolYears'));
 	}
+	public function addAssessment(){
+
+		$url = $this->referer();
+		$explode = explode("/",$url);
+
+		if ($this->request->is('post')) {
+			$this->Assessment->create();
+			if ($this->Assessment->save($this->request->data)) {
+				$this->Session->setFlash(__('The assessment has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The assessment could not be saved. Please, try again.'));
+			}
+		}
+		$schoolYears = $this->Assessment->SchoolYear->find('list',array(
+				'conditions' => array(
+						'id' => $explode[5]
+					)
+			));
+		$this->set(compact('schoolYears'));
+	}
 
 /**
  * edit method

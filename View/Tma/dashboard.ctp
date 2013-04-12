@@ -194,8 +194,39 @@ $role = $this->Session->read('Auth.User.role_id'); ?>
 
 	</div>
 </div>
- <div id="graph">
-            <div id="results" style="width: 100%; height: 70%; margin: 0 auto"></div>
-        </div>
+
+<div>
+
+<table border="1">
+		<tr>
+			<th>Notification</th>
+			<th>Folk_id</th>
+		
+			<th>
+		<?php
+			if ($notification_count == 0){
+				echo "";
+			}else{
+				echo $notification_count;
+			}
+			?>
+
+			</th>
+		
+	</tr>
+
+	<?php foreach ($notifications as $notification): ?>
+	<tr>
+		
+		<td><?php echo h($notification['Notification']['notification']); ?>&nbsp;</td>
+		<td><?php echo h($notification['Notification']['folk_id']); ?>&nbsp;</td>
+		
+			
+	
+		
+	</tr>
+<?php endforeach; ?>
+	</table>
+</div>
 
 </html>

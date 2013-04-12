@@ -1,9 +1,9 @@
 <div>
 <p>
-<?php echo $this->Html->link('Students', array('controller' => 'reports', 'action' => 'students', '')); ?> &nbsp;
+<?php echo $this->Html->link('Students', array('controller' => 'reports', 'action' => 'students', 'all')); ?> &nbsp;
 <?php echo $this->Html->link('Enrolled Student', array('controller' => 'reports', 'action' => 'students', 'enrolled_students')); ?> &nbsp;
-<?php echo $this->Html->link('Enrolled Student: level', array('controller' => 'reports','action'=> 'students', 'level')); ?> &nbsp;
-<?php echo $this->Html->link('Enrolled Student: talents', array('controller' => 'reports','action'=> 'students', 'talents')); ?> &nbsp;
+<?php echo $this->Html->link('Enrolled Student: level', array('controller' => 'reports','action'=> 'levels')); ?> &nbsp;
+
 <br/>
 <?php
 	echo $id;
@@ -12,7 +12,7 @@
 
 <?php
 
-if($id == null){ ?>
+if($id == "all"){ ?>
 	</div>
 <h2><?php echo __('Students'); ?></h2>
 	<table cellpadding="0" cellspacing="0" border="1">
@@ -91,9 +91,12 @@ if($id == null){ ?>
 
 <div>
 	
-<?php }elseif($id == "talents"){ ?>
-<?php
+<?php }elseif($id == "level"){ ?>
+	<?php foreach ($levels as $level):?>
+	<?php echo $this->Html->link(($level['Level']['level']), array('controller' => 'reports','action'=> 'students',($level['Level']['level']))); ?>
 
-?>
+	<?php endforeach; ?>
+
 <?php } ?>
 	
+

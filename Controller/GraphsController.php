@@ -14,7 +14,7 @@ class GraphsController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function ose() {
 		$users = array();
 		$total = array();
 		$accomplished = array();
@@ -41,6 +41,50 @@ class GraphsController extends AppController {
 
 		$this->set(compact('users','total','accomplished','pending'));
 	}
+
+	public function dashboard(){
+
+		$dateData="";
+		$enrolledData="";
+		$lastDate = date('Y');
+		$dates = array();
+		$enrolled = array();
+		$j=0;
+
+		$query = mysql_query("select count(id) from school_years");
+		$overall = mysql_result($query,0);
+
+		for($i=1999;$i<=$lastDate;$i++){
+			$k=$i+1;
+			$query = mysql_query("select count(id) from school_years where enrollment_date>='$i/1/1' AND enrollment_date<'$k/1/1'");
+			$enrolled[$j] = mysql_result($query,0);
+		
+			$dates[$j] = "$i";
+			$j++;
+		}
+
+		$size=count($dates);
+		$size--;
+
+		foreach ($dates as $i => $value) {
+            if($i==$size){
+                $dateData = "$dateData" . $dates[$i];
+            }else{
+                $dateData = "$dateData" . $dates[$i] . ",";
+            }
+        }
+
+        foreach ($enrolled as $i => $value) {
+            if($i==$size){
+                $enrolledData = "$enrolledData" . $enrolled[$i];
+            }else{
+                $enrolledData = "$enrolledData" . $enrolled[$i] . ",";
+            }
+        }
+
+
+		$this->set(compact('overall','size','dateData','enrolledData'));
+	} 
 
 
 }
