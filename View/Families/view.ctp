@@ -242,7 +242,7 @@
 	<tr>
 
 		<th><?php echo __('Event Id'); ?></th>
-
+		<th><?php echo __('Participant'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
@@ -264,7 +264,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Participant'), array('controller' => 'participants', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Participant'), array('controller' => 'families', 'action' => 'addParticipant')); ?> </li>
 		</ul>
 	</div>
 </div>

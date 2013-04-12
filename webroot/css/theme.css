@@ -19,7 +19,14 @@ fieldset{
 	top: 50px;
 }
 
-#crm{
+#crm{<?php
+
+App::uses('AppModel', 'Model');
+class Theme extends AppModel {
+
+    
+
+}
 	position: relative;
 	left: 450px;
 	top: -15px;
@@ -93,7 +100,7 @@ input{
   position: relative;
   float: left;
   height: 30px;
-  width: 120px;
+  width: 121px;
   line-height: 30px;
   background: #999999;
 }

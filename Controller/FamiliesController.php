@@ -22,7 +22,31 @@ class FamiliesController extends AppController{
 		$questions = "helloworld";
 	
 		$this->set('folk', $this->Folk->find('first', $options));
+	}
 
+	public function addParticipant(){
+
+		$url = $this->referer();
+		$explode = explode("/",$url);
+
+		if ($this->request->is('post')) {
+			$this->Participant->create();
+		if ($this->Participant->save($this->request->data)) {
+				$this->Session->setFlash(__('The participant has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The participant could not be saved. Please, try again.'));
+			}
+		}
+		$events = $this->Participant->Event->find('list');
+	
+		$folks = $this->Child->Folk->find('list',array(
+				'conditions' => array(
+						'id' => $explode[5]
+					)
+			));
+
+		$this->set(compact('events', 'folks','explode'));
 
 	}
 
