@@ -56,6 +56,32 @@ class AnswersController extends AppController {
 		$this->set(compact('folks', 'questions'));
 	}
 
+	public function addAnswer(){
+		$url = $this->referer();
+		$explode = explode("/",$url);
+
+		if ($this->request->is('post')) {
+			$this->Answer->create();
+			debug($this->request->data['Answer']['folk_id']);
+			if ($this->Answer->save($this->request->data)) {
+				$this->Session->setFlash(__('The answer has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The answer could not be saved. Please, try again.'));
+			}
+		
+}		$folks = $this->Answer->Folk->find('list');
+		$questions = $this->Answer->Question->find('list');
+		$questions = $this->Answer->Question->find('list',array(
+				'conditions' => array(
+						'id' => $explode[5]
+					)
+			));
+
+		$this->set(compact('folks', 'questions'));
+
+	}
+
 /**
  * edit method
  *
