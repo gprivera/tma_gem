@@ -1,22 +1,25 @@
-<div class="children index">
+<div id="main">
 	<h2><?php echo __('Children'); ?></h2>
-	<table cellpadding="0" cellspacing="0" border="1">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('surname'); ?></th>
-			<th><?php echo $this->Paginator->sort('middle_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('given_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('address'); ?></th>
-			<th><?php echo $this->Paginator->sort('birthdate'); ?></th>
-			<th><?php echo $this->Paginator->sort('religion'); ?></th>
-			<th><?php echo $this->Paginator->sort('folk_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('is_enrolled'); ?></th>
-			<th><?php echo $this->Paginator->sort('is_graduate'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-			<th></th>
+	<table id="gradient-style">
+		<thead>
+			<tr>
+					<th scope="col"><?php echo $this->Paginator->sort('id'); ?></th>
+					<th scope="col"><?php echo $this->Paginator->sort('surname'); ?></th>
+					<th scope="col"><?php echo $this->Paginator->sort('middle_name'); ?></th>
+					<th scope="col"><?php echo $this->Paginator->sort('given_name'); ?></th>
+					<th scope="col"><?php echo $this->Paginator->sort('address'); ?></th>
+					<th scope="col"><?php echo $this->Paginator->sort('birthdate'); ?></th>
+					<th scope="col"><?php echo $this->Paginator->sort('religion'); ?></th>
+					<th scope="col"><?php echo $this->Paginator->sort('folk_id'); ?></th>
+					<th scope="col"><?php echo $this->Paginator->sort('is_enrolled'); ?></th>
+					<th scope="col"><?php echo $this->Paginator->sort('is_graduate'); ?></th>
+					<th scope="col" class="actions"><?php echo __('Actions'); ?></th>
+					<th></th>
+			</tr>
+		</thead>
 
-	</tr>
-	<?php foreach ($children as $child): ?>
+ <tbody>
+	    	<?php foreach ($children as $child): ?>
 	<tr>
 		<td><?php echo h($child['Child']['id']); ?>&nbsp;</td>
 		<td><?php echo h($child['Child']['surname']); ?>&nbsp;</td>
@@ -32,10 +35,17 @@
 		<td><?php echo h($child['Child']['is_graduate']); ?>&nbsp;</td>
 		
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $child['Child']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $child['Child']['id'])); ?>
+			<?php echo $this->Html->image('view.png', array('alt' => 'view', 'width' => '29px', 'height' => '30px', 'url' =>array('action' => 'view', $child['Child']['id'])))?>
+			
+			<?php echo $this->Html->image('edit.png', array('alt' => 'edit', 'width' => '29px', 'height' => '30px', 'url' => array('action' => 'edit', $child['Child']['id'])))?>
 
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $child['Child']['id']), null, __('Are you sure you want to delete # %s?', $child['Child']['id'])); ?>
+			<?php echo $this->Form->postLink(
+			$this->Html->image('delete.png',
+			 array("alt" => __('Delete'), "title" => __('Delete'), 'width' => '29px', 'height' => '30px',)), 
+			 array('action' => 'delete', $child['Child']['id']), 
+			 array('escape' => false, 'confirm' => __('Are you sure you want to delete # %s?')))?>
+
+
 		</td><td>
 		<?php
 	$enrolled = $child['Child']['is_enrolled'];
@@ -56,21 +66,28 @@
 </td>
 	</tr>
 <?php endforeach; ?>
+
+	    </tbody>
+	
 	</table>
 	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
+		<center>
+				<?php
+				echo $this->Paginator->counter(array(
+				'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+				));
+				?>	</p>
+				<div class="paging">
+				<?php
+					echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+					echo $this->Paginator->numbers(array('separator' => ''));
+					echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+				?>
+		</center>
 	</div>
+	
 </div>
+<!--
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
@@ -81,3 +98,4 @@
 		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+-->

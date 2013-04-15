@@ -27,12 +27,14 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
 
 
-		<div id="logo">
-			<?php echo $this->Html->image('tma_logo.png', array('alt' => 'TMA LOGO'))?>
-		</div>
-		<div id="crm">
-			<?php echo $this->Html->image('crm.png', array('alt' => 'CRM'))?>
-		</div>
+		  <div class="headerbar">
+       <?php echo $this->Html->image('headerbar.jpg', array('alt' => 'header','width' =>'100%'))?>
+    </div>
+
+    <div class="tma_crm">
+      <?php echo $this->Html->image('tma_crm.png', array('alt' => 'TMA CRM', 'url' => array('controller' => 'tma', 'action' => 'dashboard')))?>
+    </div>  
+    
 	<?php echo $this->Html->charset(); ?>
 	<title>
 		
@@ -42,6 +44,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	//	echo $this->Html->meta('icon');
 
 		echo $this->Html->css('theme');
+    echo $this->Html->css('style');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -65,22 +68,15 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		if ($logged_user['Role']['roles'] == "Administrator"){
 			echo $this->Html->link(' Add ', array('controller' => 'users', 'action' => 'add'));
 			echo $this->Html->link(' View All ', array('controller' => 'users', 'action' => 'index'));
-		}
-
-		echo $this->Html->link(__(' Logout '), array('controller' => 'users', 'action' => 'logout')); 
-	}else{
-		
-		echo $this->Html->link(__(' Login '), array('controller' => 'users', 'action' => 'login')); 
-	}
-?>
-</div>
-
-<div>
+      echo $this->Html->link(__(' Logout '), array('controller' => 'users', 'action' => 'logout')); 
+      ?>
+    </div>
+    <div>
 <center>
 <ul id="menu">
   <li class="menu-item">
    <?php echo $this->Html->link('Home', array('controller' => 'tma', 'action' => 'dashboard')); ?>
-	</li>
+  </li>
   <li class="menu-item">
      <?php echo $this->Html->link('Families', array('controller' => 'families', 'action' => 'index')); ?>
     <ul class="sub-menu">
@@ -240,10 +236,23 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         <?php echo $this->Html->link('List', array('controller' => 'notifications', 'action' => 'index')); ?>
       </li>
     </ul>
-  </li>	     
+  </li>      
 </ul>
 </center>
 </div>
+
+
+		<?php }
+
+		
+	}else{
+		
+		echo $this->Html->link(__(' Login '), array('controller' => 'users', 'action' => 'login')); 
+	}
+?>
+</div>
+
+
 <br/><br/>
 <body>
 	<div id="container">

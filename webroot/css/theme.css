@@ -1,58 +1,90 @@
 body{
-	font-size: 18px;
-	background: -webkit-radial-gradient(center, circle farthest-corner, #E3F0E1 0%, #C9C9C9 100%);
-
+  font-size: 18px;
+  background: #ffffff;
+  margin:0;
+  padding: 0;
+  font-family: Segoe UI;
+  font-size: 14px;
 }
 /*
 fieldset{
-	border: solid;
-	border-color: #c9c9c9;
-	width: 350px;
-	height: 100px;
-	position: relative;
+  border: solid;
+  border-color: #c9c9c9;
+  width: 350px;
+  height: 100px;
+  position: relative;
 }
 */
 
+#headerbar{
+  position: fixed;
+}
+
+.tma_crm{
+  position: absolute;
+  top: 0px;
+}
+
+.head{
+  position: absolute;
+  padding-left: 1180px;
+  top: 10px;
+  float: right;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
 #logo{
-	position: relative;
-	left: 200px;
-	top: 50px;
+  position: relative;
+  left: 200px;
+  top: 50px;
 }
 
-#crm{<?php
-
-App::uses('AppModel', 'Model');
-class Theme extends AppModel {
-
-    
-
-}
-	position: relative;
-	left: 450px;
-	top: -15px;
+#crm{
+  position: relative;
+  left: 450px;
+  top: -15px;
 
 }
 
 #logged{
-	position: relative;
-	left: 1100px;
-	top: -15px
+  position: relative;
+  left: 1100px;
+  top: -15px
 }
 
 #loginField{
-	position: relative;
-	left: 460px;
-	top: 100px;
+  position: relative;
+  left: 460px;
+  top: 100px;
 
 }
 #log{
-	text-align: center;
+  text-align: center;
 
 }
 
 input{
-	padding: 2px;
-	outline: blue;
+  padding: 2px;
+  outline: blue;
+}
+
+a:link {
+  text-decoration: none;
+  color: #000000;
+}
+a:visited {
+  text-decoration: none;
+  color: #000000;
+}
+a:active {
+  text-decoration: none;
+  color: #000000;
+}
+a:hover {
+  text-decoration: none;
+  color: #000000;
 }
 
 .third-menu {
@@ -64,13 +96,15 @@ input{
   padding: 0;
   margin: 0;
   display: none;
+
 }
 .third-menu li {
   height: 30px;
   line-height: 30px;
-  background: #999999;
+  background: #ffffff;
+
 }
-.third-menu li:hover { background: #CCCCCC; }
+.third-menu li:hover { background: #e0dcdc; }
 
 .sub-menu {
   position: absolute;
@@ -81,28 +115,64 @@ input{
   padding: 0;
   margin: 0;
   display: none;
+
 }
 .sub-item {
   position: relative;
   height: 30px;
   line-height: 30px;
-  background: #999999;
+  background: #ffffff;
+
 }
-.sub-item:hover { background: #CCCCCC; }
+.sub-item:hover { background: #e0dcdc; }
 .sub-item:hover .third-menu { display: inline; }
 
 #menu {
   list-style: none;
   padding: 0;
   margin: 0;
+
 }
 .menu-item {
   position: relative;
   float: left;
+  left: 60px;
   height: 30px;
-  width: 121px;
+  width: 100px;
   line-height: 30px;
-  background: #999999;
+  background: #ffffff;
+  
 }
-.menu-item:hover { background: #CCCCCC; }
-.menu-item:hover .sub-menu { display: inline; }
+.menu-item:hover { 
+  background: #e0dcdc; 
+}
+.menu-item:hover .sub-menu { 
+  display: inline; 
+}
+#main { 
+  width:80%;
+  float:left;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+#training{
+  width:44%;
+  float:left;
+  margin-left: 5%;
+  margin-right: 1%;
+  margin-bottom: 15px;
+}
+#status{
+  width:90%;
+  float:left;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 15px;
+}
+#date{
+  width:44%;
+  float:left;
+  margin-left: 1%;
+  margin-right: 5%;
+  margin-bottom: 15px;
+}

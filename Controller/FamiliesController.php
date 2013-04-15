@@ -180,9 +180,9 @@ class FamiliesController extends AppController{
 
 			move_uploaded_file($tmp, $destination);
 			$this->request->data['Folk']['image'] = $filename;
-			$this->Folk->Child->create();
+			$this->Folk->create();
 			
-			if ($this->Folk->Child->saveAll($this->request->data	) ){
+			if ($this->Folk->save($this->request->data	) ){
 				$this->Session->setFlash(__('The folk has been saved'));
 				
 				$this->redirect(array('action' => 'index'));

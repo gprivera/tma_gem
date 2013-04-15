@@ -9,91 +9,58 @@
 <div>
 
 
-<div class="folks view">
-<table border ="1">
-	<td>
-	<dl>
-		<dt>
-				<table border="1">
-	<th><?php echo $this->Html->image("/f_profile/{$folk['Folk']['image']}",array('height'=>'300px','width'=>'300px')); ?></th>
+<table id="gradient-style">
+	<tr>
+		<th>Image</th>
+		<th>Surname</th>
+		<th>Given Name</th>
+		<th>Middle Name</th>
+		<th>Address</th>
+		<th>City</th>
+		<th>Mobile</th>
+		<th>Email</th>
+		<th>Status</th>
+		<th>Occupation</th>
+		<th>Business Address</th>
+		<th>Office Number</th>
+		<th>Gender</th>
+		<th>Training Date</th>
+		<th>Actions</th>
+	</tr>
+	<tr>
+		<td><?php echo $this->Html->image("/f_profile/{$folk['Folk']['image']}",array('height'=>'75px','width'=>'px')); ?></td>
+		<td><?php echo h($folk['Folk']['surname']); ?></td>
+		<td><?php echo h($folk['Folk']['middle_name']); ?></td>
+		<td><?php echo h($folk['Folk']['given_name']); ?></td>
+		<td><?php echo h($folk['Folk']['address']); ?></td>
+		<td><?php echo h($folk['Folk']['city']); ?></td>
+		<td><?php echo h($folk['Folk']['mobile_number']); ?></td>
+		<td><?php echo h($folk['Folk']['email']); ?></td>
+		<td><?php echo h($folk['Folk']['status']); ?></td>
+		<td><?php echo h($folk['Folk']['occupation']); ?></td>
+		<td><?php echo h($folk['Folk']['business_address']); ?></td>
+		<td><?php echo h($folk['Folk']['office_number']); ?></td>
+		<td><?php echo h($folk['Folk']['gender']); ?></td>
+		<td><?php echo h($folk['Folk']['training']); ?></td>
+		<td class="actions">			
+				<?php echo $this->Html->image('edit.png', array('alt' => 'edit', 'width' => '29px', 'height' => '30px', 'url' => array('action' => 'edit', $folk['Folk']['id'])))?>
+			</td>
+	</tr>
 </table>
-</div>
 
-		</dt>
-		<dt><?php echo __('Surname'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['surname']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Middle Name'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['middle_name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Given Name'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['given_name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Address'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['address']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('City'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['city']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Mobile Number'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['mobile_number']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Email'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['email']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Status'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['status']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Occupation'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['occupation']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Business Address'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['business_address']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Office Number'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['office_number']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Gender'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['gender']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Training'); ?></dt>
-		<dd>
-			<?php echo h($folk['Folk']['training']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-</td>
-</table>
-</div> <a href='/folks/edit/<?php echo $folk['Folk']['id']?>'> adsa</a>
+
+
 
 <div class="related">
+	<table>
 	<h3><?php echo __('Related Answers'); ?></h3>
+	<div class="actions">
+		<ul>
+			<li><?php echo $this->Html->link(__('New Answer'), array('controller' => 'families','action' => 'addAnswer')); ?> </li>
+		</ul>
+	</div>
 	<?php if (!empty($folk['Answer'])): ?>
-	<table cellpadding = "0" cellspacing = "0" border="1">
+	<table id="gradient-style">
 	<tr>
 
 		<th><?php echo __('Question Id'); ?></th>
@@ -114,25 +81,32 @@
 			</td>
 			<td><?php echo $answer['answer']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'answers', 'action' => 'view', $answer['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'answers', 'action' => 'edit', $answer['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'answers', 'action' => 'delete', $answer['id']), null, __('Are you sure you want to delete # %s?', $answer['id'])); ?>
+
+				<?php echo $this->Html->image('view.png', array('alt' => 'view', 'width' => '29px', 'height' => '30px', 'url' =>array('controller' => 'answers', 'action' => 'view', $answer['id'])))?>
+				<?php echo $this->Html->image('edit.png', array('alt' => 'edit', 'width' => '29px', 'height' => '30px', 'url' =>array('controller' => 'answers', 'action' => 'edit', $answer['id'])))?>
+				<?php echo $this->Form->postLink(
+					$this->Html->image('delete.png',
+					 array("alt" => __('Delete'), "title" => __('Delete'), 'width' => '29px', 'height' => '30px',)), 
+					 array('controller' => 'answers', 'action' => 'delete', $answer['id']), 
+					 array('escape' => false, 'confirm' => __('Are you sure you want to delete # %s?')))?>
+				
 			</td>
 		</tr>
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Answer'), array('controller' => 'families','action' => 'addAnswer')); ?> </li>
-		</ul>
-	</div>
+
 </div>
 <div class="related">
 	<h3><?php echo __('Related Coop Members'); ?></h3>
+		<div class="actions">
+			<ul>
+				<li><?php echo $this->Html->link(__('New Coop Member'), array('controller' => 'families', 'action' => 'addCoop')); ?> </li>
+			</ul>
+		</div>
 	<?php if (!empty($folk['CoopMember'])): ?>
-	<table cellpadding = "0" cellspacing = "0" border="1">
+	<table id="gradient-style">
 	<tr>
 		
 		<th><?php echo __('Coop Id'); ?></th>
@@ -148,25 +122,30 @@
 		
 			<td><?php echo $coopMember['date_joined']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'coop_members', 'action' => 'view', $coopMember['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'coop_members', 'action' => 'edit', $coopMember['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'coop_members', 'action' => 'delete', $coopMember['id']), null, __('Are you sure you want to delete # %s?', $coopMember['id'])); ?>
+				<?php echo $this->Html->image('view.png', array('alt' => 'view', 'width' => '29px', 'height' => '30px', 'url' =>array('controller' => 'coop_members', 'action' => 'view', $coopMember['id'])))?>
+				<?php echo $this->Html->image('edit.png', array('alt' => 'edit', 'width' => '29px', 'height' => '30px', 'url' =>array('controller' => 'coop_members', 'action' => 'edit', $coopMember['id'])))?>
+				<?php echo $this->Form->postLink(
+					$this->Html->image('delete.png',
+					 array("alt" => __('Delete'), "title" => __('Delete'), 'width' => '29px', 'height' => '30px',)), 
+					 array('controller' => 'coop_members', 'action' => 'delete', $coopMember['id']), 
+					 array('escape' => false, 'confirm' => __('Are you sure you want to delete # %s?')))?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Coop Member'), array('controller' => 'families', 'action' => 'addCoop')); ?> </li>
-		</ul>
-	</div>
+	
 </div>
 <div class="related">
 	<h3><?php echo __('Related Folk Prerequisites'); ?></h3>
+		<div class="actions">
+		<ul>
+			<li><?php echo $this->Html->link(__('New Folk Prerequisite'), array('controller' => 'families', 'action' => 'addPrerequisite')); ?> </li>
+		</ul>
+	</div>
 	<?php if (!empty($folk['FolkPrerequisite'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table id="gradient-style">
 	<tr>
 	
 		<th><?php echo __('Requirement Id'); ?></th>
@@ -183,25 +162,31 @@
 			<td><?php echo $folkPrerequisite['is_accomplished']; ?></td>
 		
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'folk_prerequisites', 'action' => 'view', $folkPrerequisite['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'folk_prerequisites', 'action' => 'edit', $folkPrerequisite['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'folk_prerequisites', 'action' => 'delete', $folkPrerequisite['id']), null, __('Are you sure you want to delete # %s?', $folkPrerequisite['id'])); ?>
+
+				<?php echo $this->Html->image('view.png', array('alt' => 'view', 'width' => '29px', 'height' => '30px', 'url' => array('controller' => 'folk_prerequisites', 'action' => 'view', $folkPrerequisite['id'])))?>
+				<?php echo $this->Html->image('edit.png', array('alt' => 'edit', 'width' => '29px', 'height' => '30px', 'url' => array('controller' => 'folk_prerequisites', 'action' => 'edit', $folkPrerequisite['id'])))?>
+				<?php echo $this->Form->postLink(
+					$this->Html->image('delete.png',
+					 array("alt" => __('Delete'), "title" => __('Delete'), 'width' => '29px', 'height' => '30px',)), 
+					  array('controller' => 'folk_prerequisites', 'action' => 'delete', $folkPrerequisite['id']), 
+					 array('escape' => false, 'confirm' => __('Are you sure you want to delete # %s?')))?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Folk Prerequisite'), array('controller' => 'families', 'action' => 'addPrerequisite')); ?> </li>
-		</ul>
-	</div>
+	
 </div>
 <div class="related">
 	<h3><?php echo __('Related Notifications'); ?></h3>
+		<div class="actions">
+		<ul>
+			<li><?php echo $this->Html->link(__('New Notification'), array('controller' => 'families', 'action' => 'addNotification')); ?> </li>
+		</ul>
+	</div>
 	<?php if (!empty($folk['Notification'])): ?>
-	<table cellpadding = "0" cellspacing = "0" border="1">
+	<table id="gradient-style">
 	<tr>
 
 		<th><?php echo __('Notification'); ?></th>
@@ -229,16 +214,17 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Notification'), array('controller' => 'families', 'action' => 'addNotification')); ?> </li>
-		</ul>
-	</div>
+	
 </div>
 <div class="related">
 	<h3><?php echo __('Related Participants'); ?></h3>
+		<div class="actions">
+			<ul>
+				<li><?php echo $this->Html->link(__('New Participant'), array('controller' => 'families', 'action' => 'addParticipant')); ?> </li>
+			</ul>
+		</div>
 	<?php if (!empty($folk['Participant'])): ?>
-	<table cellpadding = "0" cellspacing = "0" border="1">
+	<table id="gradient-style">
 	<tr>
 
 		<th><?php echo __('Event Id'); ?></th>
@@ -262,16 +248,18 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Participant'), array('controller' => 'families', 'action' => 'addParticipant')); ?> </li>
-		</ul>
-	</div>
+	
 </div>
 <div class="related">
 	<h3><?php echo __('Related Children'); ?></h3>
+		<div class="actions">
+		<ul>
+
+			<li><?php echo $this->Html->link(__('New Child'), array('controller' => 'families','action' => 'addChild')); ?> </li>
+		</ul>
+	</div>
 	<?php if (!empty($folk['Child'])): ?>
-	<table cellpadding = "0" cellspacing = "0" border="1">
+	<table id="gradient-style">
 	<tr>
 		
 		<th><?php echo __('Surname'); ?></th>
@@ -307,10 +295,5 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-
-			<li><?php echo $this->Html->link(__('New Child'), array('controller' => 'families','action' => 'addChild')); ?> </li>
-		</ul>
-	</div>
+	
 </div>

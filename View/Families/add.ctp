@@ -18,20 +18,6 @@
 		echo $this->Form->input('image', array('type' => 'file'));
 		echo $this->Form->input('training');
 	?>
-	</fieldset>
-
-	<fieldset>
-		<legend><?php echo __('Add Child'); ?></legend>
-	<?php
-		echo $this->Form->input('Child.surname');
-		echo $this->Form->input('Child.middle_name');
-		echo $this->Form->input('Child.given_name');
-		echo $this->Form->input('Child.address');
-		echo $this->Form->date('Child.birthdate');
-		echo $this->Form->input('Child.religion');
-		echo $this->Form->input('Child.is_enrolled');
-		echo $this->Form->input('Child.is_graduate');
-	?>
-	</fieldset>
+		</fieldset>
 	<?php echo $this->Form->end(__('Submit')); ?>
 </div>
